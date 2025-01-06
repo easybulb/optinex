@@ -1,4 +1,11 @@
 from django.contrib import admin
-from .models import Service
+from .models import Service, Appointment
 
 admin.site.register(Service)
+
+@admin.register(Appointment)
+class AppointmentAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'service', 'date', 'time', 'status')
+    list_filter = ('service', 'status')
+    search_fields = ('name', 'email')
+
