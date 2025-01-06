@@ -4,10 +4,15 @@
 <section>
     <h2>Our Services</h2>
     <ul>
-        <li>Comprehensive Eye Tests</li>
-        <li>Contact Lens Consultations</li>
-        <li>Prescription Glasses</li>
-        <li>Eye Care Consultations</li>
+        {% for service in services %}
+        <li>
+            <h3>{{ service.name }}</h3>
+            <p>{{ service.description }}</p>
+            {% if service.price %}
+            <p>Price: ${{ service.price }}</p>
+            {% endif %}
+        </li>
+        {% endfor %}
     </ul>
 </section>
 {% endblock %}
