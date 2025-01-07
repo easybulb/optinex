@@ -1,6 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Welcome to the Admin Dashboard</h2>
-<p>Here, you can manage appointments, users, and other business settings.</p>
+<h2>Admin Dashboard</h2>
+<p>Manage all appointments and write blogs.</p>
+
+<h3>All Appointments</h3>
+<table>
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Service</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for appointment in appointments %}
+        <tr>
+            <td>{{ appointment.email }}</td>
+            <td>{{ appointment.service }}</td>
+            <td>{{ appointment.date }}</td>
+            <td>{{ appointment.time }}</td>
+            <td>{{ appointment.status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'write_blog' %}">Write a Blog</a>
 {% endblock %}

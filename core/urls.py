@@ -10,4 +10,5 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='account_dashboard'),
     path('admin-dashboard/', views.admin_dashboard, name='admin_dashboard'),
     path('role-redirect/', views.role_based_redirect, name='role_based_redirect'),
+    path('cancel-appointment/<int:appointment_id>/', views.cancel_appointment, name='cancel_appointment'),
 ]

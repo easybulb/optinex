@@ -30,6 +30,17 @@ def book_appointment(request):
 
 
 @login_required
+def cancel_appointment(request, appointment_id):
+    appointment = Appointment.objects.get(id=appointment_id)
+    if appointment.email == request.user.email:  # Ensure only the owner can cancel
+        appointment.status = "Canceled"
+        appointment.save()
+        messages.success(request, "Your appointment has been canceled.")
+    return redirect('account_dashboard')
+
+
+
+@login_required
 def dashboard(request):
     # Get the logged-in user's appointments
     user_appointments = Appointment.objects.filter(email=request.user.email).order_by('date', 'time')
@@ -41,7 +52,10 @@ def admin_dashboard(request):
     # Restrict access to staff (admin) users only
     if not request.user.is_staff:
         return redirect('account_dashboard')  # Redirect non-admin users to their dashboard
-    return render(request, 'core/admin_dashboard.html')
+    
+    # Fetch all appointments
+    all_appointments = Appointment.objects.all().order_by('date', 'time')
+    return render(request, 'core/admin_dashboard.html', {'appointments': all_appointments})
 
 
 @login_required

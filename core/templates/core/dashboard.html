@@ -3,7 +3,7 @@
 {% block content %}
 <h2>Welcome to Your Dashboard, {{ user.first_name }}</h2>
 
-<h3>Your Upcoming Appointments</h3>
+<h3>Your Appointments</h3>
 {% if appointments %}
     <table>
         <thead>
@@ -12,6 +12,7 @@
                 <th>Date</th>
                 <th>Time</th>
                 <th>Status</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -21,6 +22,9 @@
                 <td>{{ appointment.date }}</td>
                 <td>{{ appointment.time }}</td>
                 <td>{{ appointment.status }}</td>
+                <td>
+                    <a href="{% url 'cancel_appointment' appointment.id %}">Cancel</a>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
@@ -28,6 +32,5 @@
 {% else %}
     <p>You have no upcoming appointments.</p>
 {% endif %}
-
 <a href="{% url 'book_appointment' %}">Book a New Appointment</a>
 {% endblock %}
