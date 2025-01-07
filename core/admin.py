@@ -1,7 +1,8 @@
 from django.contrib import admin
-from .models import Service, Appointment
+from .models import Service, Appointment, UserProfile
 
 admin.site.register(Service)
+admin.site.register(UserProfile)
 
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):

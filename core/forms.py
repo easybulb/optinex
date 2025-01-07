@@ -29,7 +29,7 @@ class UserUpdateForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'email']
 
     def __init__(self, *args, **kwargs):
-        user = kwargs.get('instance')  # Get the user instance passed to the form
+        user = kwargs.get('instance')  # Get the user instance
         super().__init__(*args, **kwargs)
         if hasattr(user, 'profile'):  # Ensure the profile exists
             self.fields['phone_number'].initial = user.profile.phone_number
@@ -42,3 +42,5 @@ class UserUpdateForm(forms.ModelForm):
                 user.profile.phone_number = self.cleaned_data['phone_number']
                 user.profile.save()
         return user
+    
+
