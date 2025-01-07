@@ -26,16 +26,18 @@ def services(request):
 def contact(request):
     return render(request, 'core/contact.html')
 
+
 def book_appointment(request):
     if request.method == "POST":
         form = AppointmentForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, "Your appointment has been booked successfully!")
-            return redirect('home')
+            return redirect('account_dashboard')
     else:
         form = AppointmentForm()
     return render(request, 'core/book_appointment.html', {'form': form})
+
 
 
 @login_required
@@ -52,9 +54,14 @@ def cancel_appointment(request, appointment_id):
 
 @login_required
 def dashboard(request):
-    # Get only active appointments for the logged-in user
-    user_appointments = Appointment.objects.filter(email=request.user.email, status="Scheduled").order_by('date', 'time')
+    # Fetch appointments for the logged-in user with 'Pending' or 'Confirmed' status
+    user_appointments = Appointment.objects.filter(
+        email=request.user.email,
+        status__in=["Pending", "Confirmed"]
+    ).order_by('date', 'time')
     return render(request, 'core/dashboard.html', {'appointments': user_appointments})
+
+
 
 
 @login_required

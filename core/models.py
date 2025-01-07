@@ -15,16 +15,23 @@ class Appointment(models.Model):
         ('Quick Consultation', 'Quick Consultation'),
         ('Full Consultation', 'Full Consultation'),
     ]
-    
+
+    STATUS_CHOICES = [
+        ("Pending", "Pending"),
+        ("Confirmed", "Confirmed"),
+        ("Canceled", "Canceled"),
+    ]
+
     name = models.CharField(max_length=100)
     email = models.EmailField()
     service = models.CharField(max_length=50, choices=SERVICE_CHOICES)
     date = models.DateField(default=now)
     time = models.TimeField(default=now)
-    status = models.CharField(max_length=20, default="Pending", choices=[("Pending", "Pending"), ("Confirmed", "Confirmed")])
+    status = models.CharField(max_length=20, default="Pending", choices=STATUS_CHOICES)
 
     def __str__(self):
         return f"{self.name} - {self.service} on {self.date} at {self.time}"
+
 
 
 
