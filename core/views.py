@@ -4,6 +4,7 @@ from django.contrib import messages
 from .forms import AppointmentForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
+from django.utils.timezone import now
 
 # Custom decorator for admin-only views
 def admin_only(view_func):
@@ -55,13 +56,32 @@ def cancel_appointment(request, appointment_id):
 
 @login_required
 def dashboard(request):
-    # Fetch appointments for the logged-in user with 'Pending' or 'Confirmed' status
-    user_appointments = Appointment.objects.filter(
-        email=request.user.email,
-        status__in=["Pending", "Confirmed"]
-    ).order_by('date', 'time')
-    return render(request, 'core/dashboard.html', {'appointments': user_appointments})
+    # Filter appointments for the logged-in user
+    user_appointments = Appointment.objects.filter(email=request.user.email).order_by('-date', '-time')
 
+    # Separate upcoming and past appointments
+    upcoming_appointments = user_appointments.filter(status__in=["Pending", "Confirmed"], date__gte=now())
+    past_appointments = user_appointments.filter(status__in=["Canceled"], date__lt=now())
+
+    # Calculate summary statistics
+    total_appointments = user_appointments.count()
+    active_appointments = upcoming_appointments.count()
+    canceled_appointments = user_appointments.filter(status="Canceled").count()
+
+    # Example notifications
+    notifications = [
+        "Check out our new blog post: '5 Tips for Healthy Vision!'",
+        "Our new Quick Consultation service is now available!"
+    ]
+
+    return render(request, 'core/dashboard.html', {
+        'upcoming_appointments': upcoming_appointments,
+        'past_appointments': past_appointments,
+        'total_appointments': total_appointments,
+        'active_appointments': active_appointments,
+        'canceled_appointments': canceled_appointments,
+        'notifications': notifications,
+    })
 
 
 

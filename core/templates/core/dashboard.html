@@ -3,8 +3,26 @@
 {% block content %}
 <h2>Welcome to Your Dashboard, {{ user.first_name }}</h2>
 
-<h3>Your Appointments</h3>
-{% if appointments %}
+<!-- Profile Section -->
+<h3>Your Profile</h3>
+<ul>
+    <li><strong>Name:</strong> {{ user.get_full_name }}</li>
+    <li><strong>Email:</strong> {{ user.email }}</li>
+    <li><strong>Phone:</strong> {{ user.profile.phone_number }}</li>
+</ul>
+<a href="#">Edit Profile</a> <!-- Link to edit profile functionality -->
+
+<!-- Appointment Summary -->
+<h3>Appointment Summary</h3>
+<ul>
+    <li><strong>Total Appointments:</strong> {{ total_appointments }}</li>
+    <li><strong>Active Appointments:</strong> {{ active_appointments }}</li>
+    <li><strong>Canceled Appointments:</strong> {{ canceled_appointments }}</li>
+</ul>
+
+<!-- Upcoming Appointments -->
+<h3>Upcoming Appointments</h3>
+{% if upcoming_appointments %}
     <table>
         <thead>
             <tr>
@@ -16,17 +34,14 @@
             </tr>
         </thead>
         <tbody>
-            {% for appointment in appointments %}
+            {% for appointment in upcoming_appointments %}
             <tr>
                 <td>{{ appointment.service }}</td>
                 <td>{{ appointment.date }}</td>
                 <td>{{ appointment.time }}</td>
                 <td>{{ appointment.status }}</td>
                 <td>
-                    {% if appointment.status != "Canceled" %}
-                        <a href="{% url 'cancel_appointment' appointment.id %}" 
-                           onclick="return confirm('Are you sure you want to cancel this appointment?');">Cancel</a>
-                    {% endif %}
+                    <a href="{% url 'cancel_appointment' appointment.id %}" onclick="return confirm('Are you sure you want to cancel this appointment?');">Cancel</a>
                 </td>
             </tr>
             {% endfor %}
@@ -35,5 +50,51 @@
 {% else %}
     <p>You have no upcoming appointments.</p>
 {% endif %}
-<a href="{% url 'book_appointment' %}">Book a New Appointment</a>
+
+<!-- Past Appointments -->
+<h3>Past Appointments</h3>
+{% if past_appointments %}
+    <table>
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in past_appointments %}
+            <tr>
+                <td>{{ appointment.service }}</td>
+                <td>{{ appointment.date }}</td>
+                <td>{{ appointment.time }}</td>
+                <td>{{ appointment.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>You have no past appointments.</p>
+{% endif %}
+
+<!-- Notifications -->
+<h3>Notifications</h3>
+{% if notifications %}
+    <ul>
+        {% for notification in notifications %}
+        <li>{{ notification }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No notifications at this time.</p>
+{% endif %}
+
+<!-- Quick Links -->
+<h3>Quick Links</h3>
+<ul>
+    <li><a href="{% url 'book_appointment' %}">Book a New Appointment</a></li>
+    <li><a href="{% url 'blog_list' %}">Read Our Blogs</a></li>
+    <li><a href="{% url 'account_change_password' %}">Change Password</a></li>
+</ul>
 {% endblock %}
