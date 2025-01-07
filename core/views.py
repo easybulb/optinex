@@ -17,6 +17,23 @@ def admin_only(view_func):
         return view_func(request, *args, **kwargs)
     return _wrapped_view
 
+
+@login_required
+@admin_only
+def user_profile_from_appointment(request, appointment_id):
+    # Get the appointment based on the id
+    appointment = get_object_or_404(Appointment, id=appointment_id)
+
+    # Use the appointment details to fetch all related appointments by the same user
+    appointments = Appointment.objects.filter(email=appointment.email)
+
+    return render(request, 'core/user_profile.html', {
+        'user_info': appointment,  # Use the current appointment as user reference
+        'appointments': appointments,  # List of all appointments for this user
+    })
+
+
+
 def home(request):
     return render(request, 'core/home.html')
 
@@ -35,12 +52,17 @@ def book_appointment(request):
     if request.method == "POST":
         form = AppointmentForm(request.POST, user=request.user)
         if form.is_valid():
-            form.save()
+            appointment = form.save(commit=False)
+            # Save the full name (first and last name) of the user
+            appointment.name = f"{request.user.first_name} {request.user.last_name}".strip()
+            appointment.email = request.user.email  # Ensure email is set correctly
+            appointment.save()
             messages.success(request, "Your appointment has been booked successfully!")
             return redirect('account_dashboard')
     else:
         form = AppointmentForm(user=request.user)
     return render(request, 'core/book_appointment.html', {'form': form})
+
 
 @login_required
 def cancel_appointment(request, appointment_id):

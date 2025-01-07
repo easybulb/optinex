@@ -30,7 +30,7 @@ class Appointment(models.Model):
     ]
 
     created_at = models.DateTimeField(auto_now_add=True)
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, default="Anonymous")
     email = models.EmailField()
     phone_number = models.CharField(max_length=15, blank=True)
     service = models.CharField(max_length=50, choices=SERVICE_CHOICES)

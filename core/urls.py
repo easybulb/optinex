@@ -17,5 +17,5 @@ urlpatterns = [
     path('add-appointment/', views.add_appointment, name='add_appointment'),
     path('manage-users/', views.manage_users, name='manage_users'),
     path('deactivate-user/<int:user_id>/', views.deactivate_user, name='deactivate_user'),
-
+    path('admin/user-profile/<int:appointment_id>/', views.user_profile_from_appointment, name='user_profile_from_appointment'),
 ]
