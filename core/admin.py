@@ -5,7 +5,7 @@ admin.site.register(Service)
 
 @admin.register(Appointment)
 class AppointmentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'service', 'date', 'time', 'status')
+    list_display = ('name', 'email', 'phone_number', 'service', 'date', 'time', 'status')
     list_filter = ('service', 'status')
-    search_fields = ('name', 'email')
+    search_fields = ('name', 'email', 'phone_number')
 

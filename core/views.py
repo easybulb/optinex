@@ -27,15 +27,16 @@ def contact(request):
     return render(request, 'core/contact.html')
 
 
+@login_required
 def book_appointment(request):
     if request.method == "POST":
-        form = AppointmentForm(request.POST)
+        form = AppointmentForm(request.POST, user=request.user)
         if form.is_valid():
             form.save()
             messages.success(request, "Your appointment has been booked successfully!")
             return redirect('account_dashboard')
     else:
-        form = AppointmentForm()
+        form = AppointmentForm(user=request.user)
     return render(request, 'core/book_appointment.html', {'form': form})
 
 

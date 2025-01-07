@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.timezone import now
 
+
 class Service(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
@@ -24,15 +25,15 @@ class Appointment(models.Model):
 
     name = models.CharField(max_length=100)
     email = models.EmailField()
+    phone_number = models.CharField(max_length=15, blank=True)  # Optional phone number
     service = models.CharField(max_length=50, choices=SERVICE_CHOICES)
     date = models.DateField(default=now)
     time = models.TimeField(default=now)
+    message = models.TextField(blank=True)  # Optional message
     status = models.CharField(max_length=20, default="Pending", choices=STATUS_CHOICES)
 
     def __str__(self):
         return f"{self.name} - {self.service} on {self.date} at {self.time}"
-
-
 
 
 class Blog(models.Model):
