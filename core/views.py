@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Service, Appointment, Blog
 from django.contrib import messages
-from .forms import AppointmentForm
+from .forms import AppointmentForm, UserUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from django.utils.timezone import now
@@ -61,7 +61,7 @@ def dashboard(request):
 
     # Separate upcoming and past appointments
     upcoming_appointments = user_appointments.filter(status__in=["Pending", "Confirmed"], date__gte=now())
-    past_appointments = user_appointments.filter(status__in=["Canceled"], date__lt=now())
+    past_appointments = user_appointments.filter(status="Canceled", date__lt=now())
 
     # Calculate summary statistics
     total_appointments = user_appointments.count()
@@ -71,10 +71,21 @@ def dashboard(request):
     # Example notifications
     notifications = [
         "Check out our new blog post: '5 Tips for Healthy Vision!'",
-        "Our new Quick Consultation service is now available!"
+        "Our new Quick Consultation service is now available!",
     ]
 
+    # Handle profile update
+    if request.method == "POST":
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        if user_form.is_valid():
+            user_form.save()
+            messages.success(request, "Your profile has been updated successfully!")
+            return redirect('account_dashboard')  # Refresh the dashboard
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+
     return render(request, 'core/dashboard.html', {
+        'user_form': user_form,
         'upcoming_appointments': upcoming_appointments,
         'past_appointments': past_appointments,
         'total_appointments': total_appointments,

@@ -8,9 +8,16 @@
 <ul>
     <li><strong>Name:</strong> {{ user.get_full_name }}</li>
     <li><strong>Email:</strong> {{ user.email }}</li>
-    <li><strong>Phone:</strong> {{ user.profile.phone_number }}</li>
+    <li><strong>Phone:</strong> {{ user.profile.phone_number|default:"Not provided" }}</li>
 </ul>
-<a href="#">Edit Profile</a> <!-- Link to edit profile functionality -->
+<a href="#" id="toggleProfileEdit">Edit Profile</a>
+<div id="editProfileForm" style="display: none;">
+    <form method="POST">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        <button type="submit">Save Changes</button>
+    </form>
+</div>
 
 <!-- Appointment Summary -->
 <h3>Appointment Summary</h3>

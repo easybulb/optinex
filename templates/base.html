@@ -50,6 +50,14 @@
     <footer>
         <p>&copy; 2025 Optinex. All rights reserved.</p>
     </footer>
+
+    <script>
+        document.getElementById('toggleProfileEdit').addEventListener('click', function (e) {
+            e.preventDefault();
+            const form = document.getElementById('editProfileForm');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        });
+    </script>
 </body>
 
 </html>
