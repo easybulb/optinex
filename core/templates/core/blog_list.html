@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Blog Posts</h2>
+
+{% if user.is_staff %}
+    <a href="{% url 'write_blog' %}" class="btn btn-primary">Write a Blog</a>
+{% endif %}
+
+{% if blogs %}
+    <ul>
+        {% for blog in blogs %}
+        <li>
+            <h3>{{ blog.title }}</h3>
+            <p>{{ blog.content|truncatewords:50 }}</p>
+            <p>Published on {{ blog.created_at|date:"F j, Y" }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No blog posts available.</p>
+{% endif %}
+{% endblock %}

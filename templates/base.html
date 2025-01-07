@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Optinex</title>
 </head>
+
 <body>
     <header>
         <h1>Optinex</h1>
@@ -14,26 +16,30 @@
             <a href="{% url 'services' %}">Services</a>
             <a href="{% url 'book_appointment' %}">Book an Appointment</a>
             <a href="{% url 'contact' %}">Contact</a>
+            <a href="{% url 'blog_list' %}">Blogs</a>
 
             <!-- Conditional Links for Login and Logout -->
             {% if user.is_authenticated %}
-                <a href="{% url 'account_logout' %}">Logout</a>
-                <a href="{% url 'account_change_password' %}">Change Password</a>
-                <a href="{% url 'account_dashboard' %}">Dashboard</a>
+            <a href="{% url 'account_logout' %}">Logout</a>
+            <a href="{% url 'account_change_password' %}">Change Password</a>
+            <a
+                href="{% if user.is_staff %}{% url 'admin_dashboard' %}{% else %}{% url 'account_dashboard' %}{% endif %}">
+                Dashboard
+            </a>
             {% else %}
-                <a href="{% url 'account_login' %}">Login</a>
-                <a href="{% url 'account_signup' %}">Register</a>
+            <a href="{% url 'account_login' %}">Login</a>
+            <a href="{% url 'account_signup' %}">Register</a>
             {% endif %}
         </nav>
     </header>
 
     <!-- Confirmation Messages -->
     {% if messages %}
-        <div class="messages">
-            {% for message in messages %}
-                <div class="message {{ message.tags }}">{{ message }}</div>
-            {% endfor %}
-        </div>
+    <div class="messages">
+        {% for message in messages %}
+        <div class="message {{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+    </div>
     {% endif %}
 
     <main>
@@ -45,4 +51,5 @@
         <p>&copy; 2025 Optinex. All rights reserved.</p>
     </footer>
 </body>
+
 </html>

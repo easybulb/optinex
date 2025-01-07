@@ -11,4 +11,7 @@ urlpatterns = [
     path('admin-dashboard/', views.admin_dashboard, name='admin_dashboard'),
     path('role-redirect/', views.role_based_redirect, name='role_based_redirect'),
     path('cancel-appointment/<int:appointment_id>/', views.cancel_appointment, name='cancel_appointment'),
+    path('write-blog/', views.write_blog, name='write_blog'),
+    path('blogs/', views.blog_list, name='blog_list'),
+
 ]
