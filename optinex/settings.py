@@ -60,7 +60,7 @@ INSTALLED_APPS = [
 # Custom allauth settings
 SITE_ID = 1
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = 'redirect_after_login'
+LOGIN_REDIRECT_URL = 'role_based_redirect'
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
 ACCOUNT_SESSION_REMEMBER = True

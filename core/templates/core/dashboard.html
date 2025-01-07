@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Welcome to Your Dashboard, {{ user.first_name }}</h2>
+
+<h3>Your Upcoming Appointments</h3>
+{% if appointments %}
+    <table>
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.service }}</td>
+                <td>{{ appointment.date }}</td>
+                <td>{{ appointment.time }}</td>
+                <td>{{ appointment.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>You have no upcoming appointments.</p>
+{% endif %}
+
+<a href="{% url 'book_appointment' %}">Book a New Appointment</a>
+{% endblock %}
