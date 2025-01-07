@@ -29,6 +29,7 @@ class Appointment(models.Model):
         ("Canceled", "Canceled"),
     ]
 
+    created_at = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=100)
     email = models.EmailField()
     phone_number = models.CharField(max_length=15, blank=True)

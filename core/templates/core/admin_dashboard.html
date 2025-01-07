@@ -2,31 +2,106 @@
 
 {% block content %}
 <h2>Admin Dashboard</h2>
-<p>Manage all appointments and write blogs.</p>
+<p>Manage all appointments, users, and write blogs.</p>
 
+<!-- Appointment Summary -->
+<h3>Appointment Summary</h3>
+<ul>
+    <li>Total Appointments: {{ appointment_summary.total }}</li>
+    <li>Pending Appointments: {{ appointment_summary.pending }}</li>
+    <li>Confirmed Appointments: {{ appointment_summary.confirmed }}</li>
+    <li>Canceled Appointments: {{ appointment_summary.canceled }}</li>
+</ul>
+
+<!-- Filters and Search -->
+<h3>Search and Filters</h3>
+<form method="GET" action="{% url 'admin_dashboard' %}">
+    <input type="text" name="q" placeholder="Search by name, email, or service" value="{{ query }}">
+    <button type="submit">Search</button>
+</form>
+
+<!-- Appointment Table -->
 <h3>All Appointments</h3>
 <table>
     <thead>
         <tr>
+            <th>Date Added</th>
             <th>User</th>
             <th>Service</th>
             <th>Date</th>
             <th>Time</th>
             <th>Status</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         {% for appointment in appointments %}
         <tr>
+            <td>{{ appointment.created_at|date:"M d, Y h:i A" }}</td>
             <td>{{ appointment.email }}</td>
             <td>{{ appointment.service }}</td>
             <td>{{ appointment.date }}</td>
             <td>{{ appointment.time }}</td>
             <td>{{ appointment.status }}</td>
+            <td>
+                <a href="#">Edit</a> | 
+                <a href="#" onclick="return confirm('Are you sure you want to cancel this appointment?');">Cancel</a>
+            </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 
+<!-- Add Appointment -->
+<h3>Add Appointment</h3>
+<a href="{% url 'add_appointment' %}">Add New Appointment</a>
+
+<!-- Monthly Trends -->
+<h3>Monthly Appointment Trends</h3>
+<canvas id="appointmentChart"></canvas>
+
+<!-- Notifications -->
+<h3>Notifications</h3>
+{% if notifications %}
+    <ul>
+        {% for notification in notifications %}
+        <li>{{ notification }}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No notifications at this time.</p>
+{% endif %}
+
 <a href="{% url 'write_blog' %}">Write a Blog</a>
 {% endblock %}
+
+<!-- Include Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const monthlyAppointments = JSON.parse('{{ monthly_appointments|escapejs }}');
+    const labels = monthlyAppointments.map(item => item.month);
+    const data = monthlyAppointments.map(item => item.count);
+
+    const ctx = document.getElementById('appointmentChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Appointments',
+                data: data,
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
