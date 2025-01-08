@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
 <h2>Admin Dashboard</h2>
 <p>Manage all appointments, users, and write blogs.</p>
@@ -34,28 +36,25 @@
             <th>Actions</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="appointments-data">
         {% for appointment in appointments %}
-        <tr>
+        <tr data-id="{{ appointment.id }}">
             <td>{{ appointment.created_at|date:"M d, Y h:i A" }}</td>
             <td>
-                <a href="{% url 'user_profile_from_appointment' appointment.id %}">
-                    {{ appointment.name }}
-                </a>                              
+                <a href="#" class="view-details" data-id="{{ appointment.id }}">{{ appointment.name }}</a>
             </td>
             <td>{{ appointment.service }}</td>
             <td>{{ appointment.date }}</td>
             <td>{{ appointment.time }}</td>
             <td>{{ appointment.status }}</td>
             <td>
-                <a href="#">Edit</a> | 
-                <a href="#" onclick="return confirm('Are you sure you want to cancel this appointment?');">Cancel</a>
+                <button class="edit-btn" data-id="{{ appointment.id }}">Edit</button>
+                <button class="cancel-btn" data-id="{{ appointment.id }}">Cancel</button>
             </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
-
 
 <!-- Add Appointment -->
 <h3>Add Appointment</h3>
@@ -65,48 +64,41 @@
 <h3>Monthly Appointment Trends</h3>
 <canvas id="appointmentChart"></canvas>
 
-<!-- Notifications -->
-<h3>Notifications</h3>
-{% if notifications %}
-    <ul>
-        {% for notification in notifications %}
-        <li>{{ notification }}</li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No notifications at this time.</p>
-{% endif %}
+<!-- Modals for User Details, Edit, and Cancel -->
+<div id="user-details-modal" style="display: none;">
+    <h3>User Details</h3>
+    <p><strong>Name:</strong> <span id="user-name"></span></p>
+    <p><strong>Email:</strong> <span id="user-email"></span></p>
+    <p><strong>Phone:</strong> <span id="user-phone"></span></p>
+    <button onclick="closeModal()">Close</button>
+</div>
 
-<a href="{% url 'write_blog' %}">Write a Blog</a>
+<div id="edit-modal" style="display: none;">
+    <h3>Edit Appointment</h3>
+    <form id="edit-form">
+        <input type="hidden" name="id" id="edit-id">
+        <label for="edit-name">Name:</label>
+        <input type="text" name="name" id="edit-name">
+        <label for="edit-service">Service:</label>
+        <select name="service" id="edit-service">
+            <option value="Quick Consultation">Quick Consultation</option>
+            <option value="Full Consultation">Full Consultation</option>
+        </select>
+        <label for="edit-date">Date:</label>
+        <input type="date" name="date" id="edit-date">
+        <label for="edit-time">Time:</label>
+        <input type="time" name="time" id="edit-time">
+        <button type="submit">Save</button>
+        <button type="button" onclick="closeModal()">Cancel</button>
+    </form>
+</div>
+
+<div id="cancel-modal" style="display: none;">
+    <h3>Cancel Appointment</h3>
+    <p>Are you sure you want to cancel this appointment?</p>
+    <button id="confirm-cancel-btn">Yes</button>
+    <button onclick="closeModal()">No</button>
+</div>
 {% endblock %}
 
-<!-- Include Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    const monthlyAppointments = JSON.parse('{{ monthly_appointments|escapejs }}');
-    const labels = monthlyAppointments.map(item => item.month);
-    const data = monthlyAppointments.map(item => item.count);
-
-    const ctx = document.getElementById('appointmentChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: labels,
-            datasets: [{
-                label: 'Appointments',
-                data: data,
-                backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-</script>
-
+<script src="{% static 'js/admin_dashboard.js' %}"></script>

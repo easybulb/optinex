@@ -64,6 +64,41 @@ def book_appointment(request):
     return render(request, 'core/book_appointment.html', {'form': form})
 
 
+from django.http import JsonResponse
+
+@login_required
+@admin_only
+def get_appointment_details(request, appointment_id):
+    appointment = get_object_or_404(Appointment, id=appointment_id)
+    return JsonResponse({
+        "id": appointment.id,
+        "name": appointment.name,
+        "email": appointment.email,
+        "phone_number": appointment.phone_number,
+        "service": appointment.service,
+        "date": appointment.date.isoformat(),
+        "time": appointment.time.isoformat(),
+    })
+
+@login_required
+@admin_only
+def edit_appointment(request, appointment_id):
+    appointment = get_object_or_404(Appointment, id=appointment_id)
+
+    if request.method == "POST":
+        data = request.POST
+        appointment.name = data.get("name", appointment.name)
+        appointment.service = data.get("service", appointment.service)
+        appointment.date = data.get("date", appointment.date)
+        appointment.time = data.get("time", appointment.time)
+        appointment.save()
+
+        return JsonResponse({"success": True, "message": "Appointment updated successfully!"})
+
+    return JsonResponse({"success": False, "message": "Invalid request."})
+
+
+
 @login_required
 def cancel_appointment(request, appointment_id):
     appointment = get_object_or_404(Appointment, id=appointment_id, email=request.user.email)
