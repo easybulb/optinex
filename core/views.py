@@ -98,6 +98,19 @@ def edit_appointment(request, appointment_id):
     return JsonResponse({"success": False, "message": "Invalid request."})
 
 
+@login_required
+@admin_only
+def cancel_appointment_admin(request, appointment_id):
+    appointment = get_object_or_404(Appointment, id=appointment_id)
+
+    if request.method == "POST":
+        appointment.status = "Canceled"
+        appointment.save()
+        return JsonResponse({"success": True, "message": "Appointment canceled successfully!"})
+    
+    return JsonResponse({"success": False, "message": "Invalid request."})
+
+
 
 @login_required
 def cancel_appointment(request, appointment_id):

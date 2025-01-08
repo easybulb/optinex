@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 
-{% load static %}
-
 {% block content %}
 <h2>Admin Dashboard</h2>
 <p>Manage all appointments, users, and write blogs.</p>
@@ -36,9 +34,9 @@
             <th>Actions</th>
         </tr>
     </thead>
-    <tbody id="appointments-data">
+    <tbody>
         {% for appointment in appointments %}
-        <tr data-id="{{ appointment.id }}">
+        <tr>
             <td>{{ appointment.created_at|date:"M d, Y h:i A" }}</td>
             <td>
                 <a href="#" class="view-details" data-id="{{ appointment.id }}">{{ appointment.name }}</a>
@@ -56,15 +54,7 @@
     </tbody>
 </table>
 
-<!-- Add Appointment -->
-<h3>Add Appointment</h3>
-<a href="{% url 'add_appointment' %}">Add New Appointment</a>
-
-<!-- Monthly Trends -->
-<h3>Monthly Appointment Trends</h3>
-<canvas id="appointmentChart"></canvas>
-
-<!-- Modals for User Details, Edit, and Cancel -->
+<!-- Modals -->
 <div id="user-details-modal" style="display: none;">
     <h3>User Details</h3>
     <p><strong>Name:</strong> <span id="user-name"></span></p>
@@ -100,5 +90,3 @@
     <button onclick="closeModal()">No</button>
 </div>
 {% endblock %}
-
-<script src="{% static 'js/admin_dashboard.js' %}"></script>
