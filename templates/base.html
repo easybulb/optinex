@@ -17,28 +17,38 @@
 
 <body>
     <header>
-        <h1>Optinex</h1>
-        <nav>
-            <a href="{% url 'home' %}">Home</a>
-            <a href="{% url 'about' %}">About</a>
-            <a href="{% url 'services' %}">Services</a>
-            <a href="{% url 'book_appointment' %}">Book an Appointment</a>
-            <a href="{% url 'contact' %}">Contact</a>
-            <a href="{% url 'blog_list' %}">Blogs</a>
-
-            <!-- Conditional Links for Login and Logout -->
-            {% if user.is_authenticated %}
-            <a href="{% url 'account_logout' %}">Logout</a>
-            <a href="{% url 'account_change_password' %}">Change Password</a>
-            <a
-                href="{% if user.is_staff %}{% url 'admin_dashboard' %}{% else %}{% url 'account_dashboard' %}{% endif %}">
-                Dashboard
-            </a>
-            {% else %}
-            <a href="{% url 'account_login' %}">Login</a>
-            <a href="{% url 'account_signup' %}">Register</a>
-            {% endif %}
-        </nav>
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <span><a href="#">Info Pack</a></span>
+                <span><a href="#">Callback</a></span>
+                <span><a href="tel:+08000931110">Call: 0800 093 1110</a></span>
+            </div>
+            <div class="top-bar-right">
+                {% if user.is_authenticated %}
+                <a href="{% url 'account_logout' %}">Logout</a>
+                <a href="{% url 'account_change_password' %}">Change Password</a>
+                {% else %}
+                <a href="{% url 'account_login' %}">Login</a>
+                <a href="{% url 'account_signup' %}">Register</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="main-header">
+            <div class="logo">
+                <h1>Optinex</h1>
+            </div>
+            <nav>
+                <button id="menu-toggle" class="burger-menu">&#9776;</button>
+                <ul id="menu" class="hidden">
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                    <li><a href="{% url 'about' %}">About</a></li>
+                    <li><a href="{% url 'services' %}">Services</a></li>
+                    <li><a href="{% url 'book_appointment' %}">Book an Appointment</a></li>
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                    <li><a href="{% url 'blog_list' %}">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <!-- Confirmation Messages -->
@@ -59,17 +69,10 @@
         <p>&copy; 2025 Optinex. All rights reserved.</p>
     </footer>
 
-    <!-- Inline JavaScript -->
+    <!-- JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const toggleButton = document.getElementById('toggleProfileEdit');
-            if (toggleButton) {
-                toggleButton.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const form = document.getElementById('editProfileForm');
-                    form.style.display = form.style.display === 'none' ? 'block' : 'none';
-                });
-            }
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            document.getElementById('menu').classList.toggle('hidden');
         });
     </script>
 

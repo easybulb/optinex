@@ -1,10 +1,39 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
-<section>
-    <h2>Your Vision, Our Priority</h2>
-    <p>Welcome to Optinex, your trusted online eye clinic.</p>
-    <a href="{% url 'book_appointment' %}">Book an Appointment</a>
-    <a href="/about/">Meet the Optometrist</a>
+<section class="hero-section">
+    <div class="hero-content">
+        <h1>Care You Trust, Prices You'll Love</h1>
+        <p>Exceptional eye care services tailored for you.</p>
+        <a class="btn-primary" href="{% url 'book_appointment' %}">Book a Free Consultation</a>
+        <a class="btn-secondary" href="{% url 'about' %}">Meet the Optometrist</a>
+    </div>
+</section>
+
+<section class="services">
+    <h2>Our Services</h2>
+    <div class="service">
+        <img src="{% static 'images/laser-eye-surgery.jpg' %}" alt="Laser Eye Surgery">
+        <h3>Laser Eye Surgery</h3>
+        <p>Transform your vision with cutting-edge laser technology.</p>
+    </div>
+    <div class="service">
+        <img src="{% static 'images/lens-surgery.jpg' %}" alt="Lens Surgery">
+        <h3>Lens Surgery</h3>
+        <p>Restore clear vision with advanced lens surgery.</p>
+    </div>
+    <div class="service">
+        <img src="{% static 'images/eye-health.jpg' %}" alt="Eye Health">
+        <h3>Eye Health</h3>
+        <p>Comprehensive eye care to maintain your vision for life.</p>
+    </div>
+</section>
+
+<section class="cta">
+    <h2>Get in Touch</h2>
+    <p>Ready to transform your vision? Contact us today!</p>
+    <a class="btn-primary" href="{% url 'contact' %}">Contact Us</a>
 </section>
 {% endblock %}
