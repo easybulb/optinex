@@ -6,54 +6,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Optinex{% endblock %}</title>
+    <meta name="description"
+        content="Optinex provides expert optometry services, from eye tests to consultations, ensuring your vision is always our priority.">
+    <meta name="keywords" content="optometry, eye care, consultations, glasses, optinex, vision specialists">
+    <meta name="author" content="Henry Ofodieze">
+    <meta name="robots" content="index, follow">
+    <title>{% block title %}Optinex - Your Vision, Our Priority{% endblock %}</title>
 
     <!-- Link to main CSS file -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <!-- Block for additional CSS -->
     {% block extra_css %}{% endblock %}
+
+    <!-- Favicon links -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon/favicon-16x16.png' %}">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/f40ce1e09e.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <header>
-        <div class="top-bar">
-            <div class="top-bar-left">
-                <span><a href="#">Info Pack</a></span>
-                <span><a href="#">Callback</a></span>
-                <span><a href="tel:+08000931110">Call: 0800 093 1110</a></span>
+        <!-- Logo and accounts -->
+        <div id="logo-accounts-container">
+            <div id="logo">
+                <a href="{% url 'home' %}">
+                    <h1 id="logo-link" aria-label="Website logo (Opens the home page)">Optinex</h1>
+                </a>
             </div>
-            <div class="top-bar-right">
-                {% if user.is_authenticated %}
-                <a href="{% url 'account_logout' %}">Logout</a>
-                <a href="{% url 'account_change_password' %}">Change Password</a>
-                {% else %}
-                <a href="{% url 'account_login' %}">Login</a>
-                <a href="{% url 'account_signup' %}">Register</a>
-                {% endif %}
-            </div>
-        </div>
-        <div class="main-header">
-            <div class="logo">
-                <h1>Optinex</h1>
-            </div>
-            <nav>
-                <button id="menu-toggle" class="burger-menu">&#9776;</button>
-                <ul id="menu" class="hidden">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'services' %}">Services</a></li>
-                    <li><a href="{% url 'book_appointment' %}">Book an Appointment</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
-                    <li><a href="{% url 'blog_list' %}">Blog</a></li>
+            <div id="accounts">
+                <ul class="accounts-list">
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'account_logout' %}" aria-label="Logout">Logout</a></li>
+                    {% else %}
+                    <li><i class="fa-solid fa-right-to-bracket"></i><a href="{% url 'account_login' %}"
+                            class="{% if request.resolver_match.url_name == 'account_login' %}current{% endif %}"
+                            aria-label="Login">Login</a></li>
+                    <li><a href="{% url 'account_signup' %}"
+                            class="{% if request.resolver_match.url_name == 'account_signup' %}current{% endif %}"
+                            aria-label="Register">Register</a></li>
+                    {% endif %}
                 </ul>
-            </nav>
+            </div>
         </div>
+
+        <!-- Navigation Bar -->
+        <nav id="main-nav">
+            <div id="nav-container">
+                <ul class="nav-list">
+                    <li><a href="{% url 'home' %}"
+                            class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}"
+                            aria-label="Home">Home</a></li>
+                    <li><a href="{% url 'about' %}"
+                            class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}"
+                            aria-label="About">About</a></li>
+                    <li><a href="{% url 'services' %}"
+                            class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}"
+                            aria-label="Services">Services</a></li>
+                    <li><a href="{% url 'contact' %}"
+                            class="{% if request.resolver_match.url_name == 'contact' %}active{% endif %}"
+                            aria-label="Contact">Contact</a></li>
+                    <li><a href="{% url 'blog_list' %}"
+                            class="{% if request.resolver_match.url_name == 'blog_list' %}active{% endif %}"
+                            aria-label="Blog">Blog</a></li>
+                    <li><a href="{% url 'book_appointment' %}"
+                            class="{% if request.resolver_match.url_name == 'appointment_booking' %}active{% endif %}"
+                            aria-label="Appointments">Book Appointment</a></li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
-    <!-- Confirmation Messages -->
+    <!-- Flash Messages -->
     {% if messages %}
-    <div class="messages">
+    <div id="confirmation-messages">
         {% for message in messages %}
         <div class="message {{ message.tags }}">{{ message }}</div>
         {% endfor %}
@@ -61,25 +90,34 @@
     {% endif %}
 
     <main>
-        {% block content %}
-        {% endblock %}
+        <!-- Page Content -->
+        <div id="content-container">
+            {% block content %}
+            {% endblock %}
+        </div>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Optinex. All rights reserved.</p>
+    <!-- Footer -->
+    <footer id="main-footer">
+        <ul id="socials">
+            <li><a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i
+                        class="fa-brands fa-facebook"></i></a></li>
+            <li><a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i
+                        class="fa-brands fa-twitter"></i></a></li>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram"><i
+                        class="fa-brands fa-instagram"></i></a></li>
+            <li><a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i
+                        class="fa-brands fa-youtube"></i></a></li>
+        </ul>
+        <p>&copy; {{ now|date:"Y" }} Optinex. All rights reserved.</p>
+        <p>
+            <a href="#" aria-label="Privacy Policy">Privacy Policy</a> |
+            <a href="#" aria-label="Terms of Service">Terms of Service</a>
+        </p>
     </footer>
 
-    <!-- JavaScript -->
-    <script>
-        document.getElementById('menu-toggle').addEventListener('click', function () {
-            document.getElementById('menu').classList.toggle('hidden');
-        });
-    </script>
-
-    <!-- Block for Additional Scripts -->
-    {% block scripts %}
-    {% endblock %}
-
+    <!-- Block for additional JS -->
+    {% block extra_js %}{% endblock %}
 </body>
 
 </html>

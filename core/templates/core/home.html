@@ -1,39 +1,116 @@
 {% extends 'base.html' %}
 
+{% block title %}Optinex Home{% endblock %}
+
+{% block home_active %}active{% endblock %}
+
 {% load static %}
 
 {% block content %}
-<section class="hero-section">
-    <div class="hero-content">
-        <h1>Care You Trust, Prices You'll Love</h1>
-        <p>Exceptional eye care services tailored for you.</p>
-        <a class="btn-primary" href="{% url 'book_appointment' %}">Book a Free Consultation</a>
-        <a class="btn-secondary" href="{% url 'about' %}">Meet the Optometrist</a>
+<!-- Main Banner Section -->
+<div id="hero-banner">
+    <section>
+        <h1>Your Vision, Our Priority</h1>
+        <p>Experience top-notch optometry services, from eye tests to consultations. Start your journey to clearer vision today.</p>
+    </section>
+</div>
+
+<!-- Welcome Section -->
+<section id="welcome-area">
+    <h2>Welcome to Optinex</h2>
+    <p>
+        Optinex provides comprehensive eye care services with ease and convenience. Whether you're seeking expert advice, a prescription, or glasses recommendations, our platform connects you with trusted professionals.
+    </p>
+
+    <div id="cta-buttons">
+        {% if not user.is_authenticated %}
+        <a href="{% url 'account_signup' %}" class="btn" aria-label="Sign up for Optinex">Sign Up</a>
+        {% endif %}
+        <a href="{% url 'about' %}" class="btn" aria-label="Learn more about Optinex">Learn More</a>
     </div>
 </section>
 
-<section class="services">
-    <h2>Our Services</h2>
-    <div class="service">
-        <img src="{% static 'images/laser-eye-surgery.jpg' %}" alt="Laser Eye Surgery">
-        <h3>Laser Eye Surgery</h3>
-        <p>Transform your vision with cutting-edge laser technology.</p>
-    </div>
-    <div class="service">
-        <img src="{% static 'images/lens-surgery.jpg' %}" alt="Lens Surgery">
-        <h3>Lens Surgery</h3>
-        <p>Restore clear vision with advanced lens surgery.</p>
-    </div>
-    <div class="service">
-        <img src="{% static 'images/eye-health.jpg' %}" alt="Eye Health">
-        <h3>Eye Health</h3>
-        <p>Comprehensive eye care to maintain your vision for life.</p>
+<!-- How It Works Section -->
+<section id="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+        <div class="step">
+            <h3>Step 1</h3>
+            <p>Search for an optometrist by service, location, or name.</p>
+        </div>
+        <div class="step">
+            <h3>Step 2</h3>
+            <p>View profiles, check availability, and book your appointment.</p>
+        </div>
+        <div class="step">
+            <h3>Step 3</h3>
+            <p>Receive expert eye care tailored to your needs.</p>
+        </div>
     </div>
 </section>
 
-<section class="cta">
-    <h2>Get in Touch</h2>
-    <p>Ready to transform your vision? Contact us today!</p>
-    <a class="btn-primary" href="{% url 'contact' %}">Contact Us</a>
+<!-- Featured Optometrists Section -->
+<section id="featured-optometrists">
+    <h2>Featured Optometrists</h2>
+    <div class="specialists-list">
+
+        <div class="specialist-card">
+            <img src="https://res.cloudinary.com/dkqpb7vwr/image/upload/v1727428809/izb7us5ffedp82pnazse.png"
+                alt="Photo of Dr. Anna Lemon, Optometrist">
+            <h3>Dr. Anna Lemon</h3>
+            <p>Optometrist - Manchester</p>
+            </a>
+        </div>
+        <div class="specialist-card">
+            <img src="https://res.cloudinary.com/dkqpb7vwr/image/upload/v1727891379/Henry_1000_x_1200_px_4_wbzino.png"
+                alt="Specialist Image">
+            <h3>Dr. Helen Grapes</h3>
+            <p>Optometrist - London</p>
+            </a>
+        </div>
+        <div class="specialist-card">
+            <img src="https://res.cloudinary.com/dkqpb7vwr/image/upload/v1727891379/Henry_1000_x_1200_px_2_lxuffr.png"
+                alt="Photo of Dr. Alex Kiwi, Optometrist">
+            <h3>Dr. Alex Kiwi</h3>
+            <p>Optometrist - Glasgow</p>
+            </a>
+        </div>
+        <div class="specialist-card">
+            <img src="https://res.cloudinary.com/dkqpb7vwr/image/upload/v1727428841/vtktxamzakpcolqlonpq.png"
+                alt="Photo of Dr. John Orange, Optometrist">
+            <h3>Dr. John Orange</h3>
+            <p>Optometrist - Newcastle</p>
+            </a>
+        </div>
+    </div>
 </section>
+
+<!-- Testimonials Section -->
+<section id="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial">
+        <p>"Optinex made it easy to book an eye test and find the right glasses. A fantastic service!"</p>
+        <span>- Michael C.</span>
+    </div>
+    <div class="testimonial">
+        <p>"Quick and professional service! I was able to consult an optometrist online and get a prescription immediately."</p>
+        <span>- Yennife R.</span>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section id="call-to-action">
+    <div class="image-container">
+        <img src="https://res.cloudinary.com/dkqpb7vwr/image/upload/v1727893554/Henry_5_ftm6gy.png"
+            alt="Join Optinex today">
+    </div>
+    <div class="content">
+        <h2>Join Us Today</h2>
+        <p>Whether you're seeking expert eye care or an optometrist looking to expand your practice, Optinex is here to help. Join us now!</p>
+        {% if not user.is_authenticated %}
+        <a href="{% url 'account_signup' %}" class="btn btn-primary" aria-label="Sign up for Optinex">Sign up</a>
+        {% endif %}
+    </div>
+</section>
+
 {% endblock %}
