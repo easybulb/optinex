@@ -72,9 +72,6 @@
                     <li><a href="{% url 'blog_list' %}"
                             class="{% if request.resolver_match.url_name == 'blog_list' %}active{% endif %}"
                             aria-label="Blog">Blog</a></li>
-                    <li><a href="{% url 'book_appointment' %}"
-                            class="{% if request.resolver_match.url_name == 'appointment_booking' %}active{% endif %}"
-                            aria-label="Appointments">Book Appointment</a></li>
                 </ul>
             </div>
         </nav>
