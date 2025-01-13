@@ -208,6 +208,22 @@ footer a:hover {
     background-color: #f8f9fa;
 }
 
+#hero-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust transparency as needed */
+    z-index: 1;
+}
+#hero-banner section {
+    position: relative;
+    z-index: 2;
+}
+
+
 #hero-banner h1 {
     color: #000;
     font-size: 1.5rem;
@@ -1198,7 +1214,7 @@ footer a:hover {
 
     /* Main search section and bannar */
     #hero-banner {
-        background-image: url("https://res.cloudinary.com/dkqpb7vwr/image/upload/v1727946292/Henry_21_esngzm.png");
+        background-image: url("https://res.cloudinary.com/dkqpb7vwr/image/upload/v1736801064/optinex-hero1_ykgn8t.png");
         background-position: unset;
         height: 100vh;
     }
