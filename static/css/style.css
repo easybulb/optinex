@@ -912,7 +912,7 @@ footer a:hover {
     #accounts a {
         font-size: 1.4rem;
         font-weight: 600;
-        padding: 20px 15px;
+        /* padding: 20px 15px; */
     }
 
     .nav-list {
@@ -1211,15 +1211,13 @@ footer a:hover {
         width: auto; /* Medium screen logo size */
         height: 100px;
         margin-top:15px;
-        margin-bottom: -70px;
+        margin-bottom: -90px;
         margin-left: 20px;
-
     }
 
     #accounts a {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         margin-right: 30px;
-        margin-bottom: 20px;
     }
 
     /* Main search section and bannar */
