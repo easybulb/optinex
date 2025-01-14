@@ -54,7 +54,9 @@
 <section id="welcome-area">
     <h2>Welcome to Optinex</h2>
     <p>
-        Optinex provides comprehensive eye care services with ease and convenience. Whether you're seeking expert advice, a prescription, or glasses recommendations, our platform connects you with trusted professionals.
+        Optinex is your one-stop platform for professional eye care services offered by a trusted optometrist. Book
+        online or phone consultations, conducted via video call or regular call, and explore a curated selection of
+        lenses and frames to suit your needs. Quality care and personalized solutions, all at your convenience.
     </p>
 
     <div id="cta-buttons">
@@ -71,54 +73,52 @@
     <div class="steps">
         <div class="step">
             <h3>Step 1</h3>
-            <p>Search for an optometrist by service, location, or name.</p>
+            <p>Book your consultation online or over the phone with our professional optometrist.</p>
         </div>
         <div class="step">
             <h3>Step 2</h3>
-            <p>View profiles, check availability, and book your appointment.</p>
+            <p>Join your scheduled video call or phone appointment to receive personalized eye care.</p>
         </div>
         <div class="step">
             <h3>Step 3</h3>
-            <p>Receive expert eye care tailored to your needs.</p>
+            <p>Explore our wide range of lenses and frames for a complete solution to your eye care needs.</p>
         </div>
     </div>
 </section>
 
-<!-- Featured Optometrists Section -->
-<section id="featured-optometrists">
-    <h2>Featured Optometrists</h2>
-    <div class="specialists-list">
 
-        <div class="specialist-card">
+<!-- Featured Frames Section -->
+<section id="featured-frames">
+    <h2>Featured Frames</h2>
+    <div class="frames-list">
+
+        <div class="frame-card">
             <img src="https://res.cloudinary.com/dkqpb7vwr/image/upload/v1727428809/izb7us5ffedp82pnazse.png"
-                alt="Photo of Dr. Anna Lemon, Optometrist">
-            <h3>Dr. Anna Lemon</h3>
-            <p>Optometrist - Manchester</p>
-            </a>
+                alt="Photo of Stylish Black Frame">
+            <h3>Stylish Black Frame</h3>
+            <p>Perfect for a bold, modern look.</p>
         </div>
-        <div class="specialist-card">
+        <div class="frame-card">
             <img src="https://res.cloudinary.com/dkqpb7vwr/image/upload/v1727891379/Henry_1000_x_1200_px_4_wbzino.png"
-                alt="Specialist Image">
-            <h3>Dr. Helen Grapes</h3>
-            <p>Optometrist - London</p>
-            </a>
+                alt="Photo of Vibrant Red Frame">
+            <h3>Vibrant Red Frame</h3>
+            <p>Add a pop of color to your style.</p>
         </div>
-        <div class="specialist-card">
+        <div class="frame-card">
             <img src="https://res.cloudinary.com/dkqpb7vwr/image/upload/v1727891379/Henry_1000_x_1200_px_2_lxuffr.png"
-                alt="Photo of Dr. Alex Kiwi, Optometrist">
-            <h3>Dr. Alex Kiwi</h3>
-            <p>Optometrist - Glasgow</p>
-            </a>
+                alt="Photo of Sleek Silver Frame">
+            <h3>Sleek Silver Frame</h3>
+            <p>Timeless design for any occasion.</p>
         </div>
-        <div class="specialist-card">
+        <div class="frame-card">
             <img src="https://res.cloudinary.com/dkqpb7vwr/image/upload/v1727428841/vtktxamzakpcolqlonpq.png"
-                alt="Photo of Dr. John Orange, Optometrist">
-            <h3>Dr. John Orange</h3>
-            <p>Optometrist - Newcastle</p>
-            </a>
+                alt="Photo of Classic Brown Frame">
+            <h3>Classic Brown Frame</h3>
+            <p>Elegant and professional appeal.</p>
         </div>
     </div>
 </section>
+
 
 <!-- Testimonials Section -->
 <section id="testimonials">
@@ -128,7 +128,8 @@
         <span>- Michael C.</span>
     </div>
     <div class="testimonial">
-        <p>"Quick and professional service! I was able to consult an optometrist online and get a prescription immediately."</p>
+        <p>"Quick and professional service! I was able to consult an optometrist online and get a prescription
+            immediately."</p>
         <span>- Yennife R.</span>
     </div>
 </section>
@@ -141,7 +142,8 @@
     </div>
     <div class="content">
         <h2>Join Us Today</h2>
-        <p>Whether you're seeking expert eye care or an optometrist looking to expand your practice, Optinex is here to help. Join us now!</p>
+        <p>Whether you're seeking expert eye care or an optometrist looking to expand your practice, Optinex is here to
+            help. Join us now!</p>
         {% if not user.is_authenticated %}
         <a href="{% url 'account_signup' %}" class="btn btn-primary" aria-label="Sign up for Optinex">Sign up</a>
         {% endif %}
