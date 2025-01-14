@@ -1210,8 +1210,8 @@ footer a:hover {
     #logo img {
         width: auto; /* Medium screen logo size */
         height: 100px;
-        margin-top:15px;
-        margin-bottom: -90px;
+        margin-top:10px;
+        margin-bottom: -80px;
         margin-left: 20px;
     }
 
