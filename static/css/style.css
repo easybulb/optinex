@@ -55,6 +55,8 @@ header {
     flex: 1;
     font-family: "Lora", sans-serif;
     font-size: 2rem;
+    color: #132B67;
+    text-decoration: none;
 }
 
 #logo-link {
