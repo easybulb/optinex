@@ -267,7 +267,7 @@ footer a:hover {
 
 .slide-text {
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 35%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -299,9 +299,10 @@ footer a:hover {
 }
 
 #welcome-area h2 {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     margin-bottom: 10px;
     color: #132B67;
+    margin-top: 60px;
 }
 
 #welcome-area p {
