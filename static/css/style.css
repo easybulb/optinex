@@ -75,7 +75,7 @@ header {
     width: auto; /* Allow it to scale naturally */
     height: 80px; /* Set a default height */
     margin-top: 15px;
-    margin-bottom: -60px;
+    margin-bottom: -75px;
 }
 
 #accounts {
