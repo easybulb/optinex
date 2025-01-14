@@ -68,7 +68,6 @@ header {
 /* Logo container */
 #logo {
     display: flex;
-    align-items: left;
 }
 
 /* SVG logo styling */
@@ -91,7 +90,7 @@ header {
 }
 
 #accounts a {
-    margin-left: 10px;
+    margin-left: 3px;
     text-decoration: none;
     color: #333;
     margin-right: 15px;
