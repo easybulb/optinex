@@ -215,7 +215,7 @@ footer a:hover {
 
 /* ------------------------ Core - Index.html --------------------- */
 
-#hero-banner {
+/* #hero-banner {
     background-image: url("https://res.cloudinary.com/dkqpb7vwr/image/upload/v1736804112/optinex-hero-mobile1_llhegx.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -237,7 +237,27 @@ footer a:hover {
     color: #000;
     margin-bottom: 20px;
     padding-left: 15px;
+} */
+
+
+#image-carousel {
+    width: 100%;
+    height: 500px; /* Adjust height as needed */
+    margin: 20px 0;
 }
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+    margin-top: -20px;
+}
+
 
 
 /* Welcome Area Styles */
