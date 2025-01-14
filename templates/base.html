@@ -13,6 +13,13 @@
     <meta name="robots" content="index, follow">
     <title>{% block title %}Optinex - Your Vision, Our Priority{% endblock %}</title>
 
+    <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+
     <!-- Link to main CSS file -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
@@ -128,7 +135,28 @@
     </footer>
 
     <!-- Block for additional JS -->
-    {% block extra_js %}{% endblock %}
+    {% block extra_js %}
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const swiper = new Swiper(".swiper-container", {
+                loop: true, // Enable continuous loop mode
+                autoplay: {
+                    delay: 7000, // Delay between slides (in ms)
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                },
+            });
+        });
+    </script>
+    
+    {% endblock %}
 </body>
 
 </html>
