@@ -41,7 +41,7 @@
                 <ul class="accounts-list">
                     {% if user.is_authenticated %}
                         {% if user.is_staff %}
-                            <li><a href="{% url 'admin_dashboard' %}" aria-label="Admin Dashboard">Admin Dashboard</a></li>
+                            <li><a href="{% url 'admin_dashboard' %}" aria-label="Admin Dashboard">Admin</a></li>
                         {% else %}
                             <li><a href="{% url 'account_dashboard' %}" aria-label="User Dashboard">Dashboard</a></li>
                         {% endif %}

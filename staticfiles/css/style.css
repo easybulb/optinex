@@ -74,8 +74,8 @@ header {
 /* SVG logo styling */
 #logo img {
     width: auto; /* Allow it to scale naturally */
-    height: 70px; /* Set a default height */
-    /* margin-top: 20px; */
+    height: 80px; /* Set a default height */
+    margin-top: 15px;
     margin-bottom: -60px;
 }
 
