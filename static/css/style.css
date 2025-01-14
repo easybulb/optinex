@@ -157,6 +157,7 @@ nav ul li a:hover {
 }
 
 /* Footer Styles */
+
 footer {
     background-color: #0f172c;
     color: white;
@@ -257,6 +258,36 @@ footer a:hover {
     object-fit: cover;
     margin-top: -20px;
 }
+
+
+/* Slide Text Styling */
+.swiper-slide {
+    position: relative;
+}
+
+.slide-text {
+    position: absolute;
+    top: 50%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    max-width: 80%;
+    z-index: 10;
+}
+
+.slide-text h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.slide-text p {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
+
 
 
 
@@ -902,23 +933,33 @@ footer a:hover {
         padding: 20px;
     }
 
-    #hero-banner section {
-        padding: 20px;
-    }
+/* Slide Text Styling */
+.swiper-slide {
+    position: relative;
+}
 
-    #hero-banner h1 {
-        font-size: 2.5rem;
-    }
+.slide-text {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    max-width: 80%;
+    z-index: 10;
+}
 
-    #hero-banner p {
-        font-size: 1.5rem;
-    }
+.slide-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
 
-    #hero-banner img {
-        max-width: 100%;
-        height: auto;
-        margin-top: 0;
-    }
+.slide-text p {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
 
     #search-container {
         max-width: 80%;
@@ -1295,18 +1336,35 @@ footer a:hover {
     }
     /* -------------------------------About page for larger screens ---------------- */
     /* Hero Section */
-    #hero-banner-about {
-        height: 95vh;
-        padding: 80px 40px;
-    }
 
-    #hero-banner-about h1 {
-        font-size: 3rem;
-    }
 
-    #hero-banner-about p {
-        font-size: 1.5rem;
-    }
+/* Slide Text Styling */
+.swiper-slide {
+    position: relative;
+}
+
+.slide-text {
+    position: absolute;
+    top: 30%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+    max-width: 80%;
+    z-index: 10;
+}
+
+.slide-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.slide-text p {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+}
 
     /* About Content */
     #about-content {
