@@ -1360,14 +1360,15 @@ footer a:hover {
     }
 
     /* How it works section */
-
+/* 
     #how-it-works {
         height: 50vh;
+        border: 60px 0;
     }
 
     #how-it-works .steps {
         padding: 0 90px;
-    }
+    } */
 
     /* Featured specialists section */
     #featured-specialists {
@@ -1453,7 +1454,7 @@ footer a:hover {
 
     /* How It Works Section */
     #how-it-works {
-        padding: 60px 40px;
+        padding: 100px 40px;
     }
 
     #how-it-works h2 {
