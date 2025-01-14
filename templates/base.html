@@ -40,17 +40,28 @@
             <div id="accounts">
                 <ul class="accounts-list">
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'account_logout' %}" aria-label="Logout">Logout</a></li>
+                        {% if user.is_staff %}
+                            <li><a href="{% url 'admin_dashboard' %}" aria-label="Admin Dashboard">Admin Dashboard</a></li>
+                        {% else %}
+                            <li><a href="{% url 'account_dashboard' %}" aria-label="User Dashboard">Dashboard</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'account_logout' %}" aria-label="Logout">Logout</a></li>
                     {% else %}
-                    <li><i class="fa-solid fa-right-to-bracket"></i><a href="{% url 'account_login' %}"
-                            class="{% if request.resolver_match.url_name == 'account_login' %}current{% endif %}"
-                            aria-label="Login">Login</a></li>
-                    <li><a href="{% url 'account_signup' %}"
-                            class="{% if request.resolver_match.url_name == 'account_signup' %}current{% endif %}"
-                            aria-label="Register">Register</a></li>
+                        <li>
+                            <i class="fa-solid fa-right-to-bracket"></i>
+                            <a href="{% url 'account_login' %}"
+                               class="{% if request.resolver_match.url_name == 'account_login' %}current{% endif %}"
+                               aria-label="Login">Login</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'account_signup' %}"
+                               class="{% if request.resolver_match.url_name == 'account_signup' %}current{% endif %}"
+                               aria-label="Register">Register</a>
+                        </li>
                     {% endif %}
                 </ul>
             </div>
+            
         </div>
 
         <!-- Navigation Bar -->
