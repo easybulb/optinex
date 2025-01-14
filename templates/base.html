@@ -34,9 +34,9 @@
         <div id="logo-accounts-container">
             <div id="logo">
                 <a href="{% url 'home' %}">
-                    <h1 id="logo-link" aria-label="Website logo (Opens the home page)">Optinex</h1>
+                    <img src="{% static 'images/optinexnewlogo.png' %}" alt="Optinex Logo" id="logo-image" aria-label="Optinex Logo (Opens the home page)">
                 </a>
-            </div>
+            </div>            
             <div id="accounts">
                 <ul class="accounts-list">
                     {% if user.is_authenticated %}
