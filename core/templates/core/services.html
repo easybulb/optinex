@@ -1,18 +1,99 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/services.css' %}">
+{% endblock %}
 
 {% block content %}
-<section>
+<section id="services-section">
     <h2>Our Services</h2>
-    <ul>
-        {% for service in services %}
-        <li>
-            <h3>{{ service.name }}</h3>
-            <p>{{ service.description }}</p>
-            {% if service.price %}
-            <p>Price: ${{ service.price }}</p>
-            {% endif %}
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="service-category">
+        <div class="service-image">
+            <img src="{% static 'images/service5.png' %}" alt="Primary Eye Care Services">
+        </div>
+        <div class="service-content">
+            <h3>Primary Eye Care Services</h3>
+            <ul>
+                <li>Comprehensive Eye Examinations</li>
+                <li>Refraction and Prescription for Eyeglasses and Contact Lenses</li>
+            </ul>
+        </div>
+    </div>
+    <div class="service-category">
+        <div class="service-image">
+            <img src="{% static 'images/service6.png' %}" alt="Specialized Eye Care Services">
+        </div>
+        <div class="service-content">
+            <h3>Specialized Eye Care Services</h3>
+            <ul>
+                <li>Pediatric Eye Care</li>
+                <li>Geriatric Eye Care</li>
+                <li>Management of Ocular Diseases</li>
+            </ul>
+        </div>
+    </div>
+    <div class="service-category">
+        <div class="service-image">
+            <img src="{% static 'images/service2.png' %}" alt="Preventive and Lifestyle Eye Care">
+        </div>
+        <div class="service-content">
+            <h3>Preventive and Lifestyle Eye Care</h3>
+            <ul>
+                <li>Blue Light and Digital Eye Strain Management</li>
+                <li>Sports Vision Services</li>
+                <li>Eye Health and Nutritional Advice</li>
+            </ul>
+        </div>
+    </div>
+    <div class="service-category">
+        <div class="service-image">
+            <img src="{% static 'images/service4.png' %}" alt="Surgical Co-Management Services">
+        </div>
+        <div class="service-content">
+            <h3>Surgical Co-Management Services</h3>
+            <ul>
+                <li>Pre- and Post-Surgical Care</li>
+            </ul>
+        </div>
+    </div>
+    <div class="service-category">
+        <div class="service-image">
+            <img src="{% static 'images/service1.png' %}" alt="Optical Services">
+        </div>
+        <div class="service-content">
+            <h3>Optical Services</h3>
+            <ul>
+                <li>Dispensing of Eyewear</li>
+                <li>Sunglasses and Protective Eyewear</li>
+                <li>Eyewear Accessories, Protective and Maintenance Tools</li>
+            </ul>
+        </div>
+    </div>
+    <div class="service-category">
+        <div class="service-image">
+            <img src="{% static 'images/service7.png' %}" alt="Educational and Outreach Services">
+        </div>
+        <div class="service-content">
+            <h3>Educational and Outreach Services</h3>
+            <ul>
+                <li>Community Vision Screenings</li>
+                <li>Organizing Eye Health Campaigns</li>
+                <li>Patient Education</li>
+            </ul>
+        </div>
+    </div>
+    <div class="service-category">
+        <div class="service-image">
+            <img src="{% static 'images/service9.png' %}" alt="Patient Support Services">
+        </div>
+        <div class="service-content">
+            <h3>Patient Support Services</h3>
+            <ul>
+                <li>Emergency Consultations</li>
+                <li>Handling urgent eye concerns such as foreign body sensation, eye infections, or sudden vision loss via video or phone calls</li>
+            </ul>
+        </div>
+    </div>
 </section>
 {% endblock %}
