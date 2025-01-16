@@ -180,6 +180,7 @@ CLOUDINARY_STORAGE = {
 }
 
 MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Serve media files in development
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Whitenoise settings for serving static files in production

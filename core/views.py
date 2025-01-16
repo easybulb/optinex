@@ -8,6 +8,8 @@ from django.http import HttpResponseForbidden
 from django.db.models import Q, Count
 from django.utils.timezone import now
 from django.db.models.functions import TruncMonth
+from .forms import BlogForm
+from django.core.paginator import Paginator
 
 # Custom decorator for admin-only views
 def admin_only(view_func):
@@ -223,17 +225,48 @@ def role_based_redirect(request):
     else:
         return redirect('account_dashboard')
 
+
 @login_required
-@admin_only
 def write_blog(request):
+    if not request.user.is_staff:
+        return HttpResponseForbidden("You do not have permission to access this page.")
+
     if request.method == "POST":
-        title = request.POST.get('title')
-        content = request.POST.get('content')
-        Blog.objects.create(title=title, content=content)
-        messages.success(request, "Blog post created successfully!")
-        return redirect('blog_list')
-    return render(request, 'core/write_blog.html')
+        form = BlogForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Blog post created successfully!")
+            return redirect('blog_list')
+    else:
+        form = BlogForm()
+    return render(request, 'core/write_blog.html', {'form': form})
+
+@login_required
+def edit_blog(request, blog_id):
+    if not request.user.is_staff:
+        return HttpResponseForbidden("You do not have permission to access this page.")
+
+    blog = get_object_or_404(Blog, id=blog_id)
+    if request.method == "POST":
+        form = BlogForm(request.POST, request.FILES, instance=blog)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Blog post updated successfully!")
+            return redirect('blog_list')
+    else:
+        form = BlogForm(instance=blog)
+    return render(request, 'core/write_blog.html', {'form': form})
+
 
 def blog_list(request):
     blogs = Blog.objects.all().order_by('-created_at')
-    return render(request, 'core/blog_list.html', {'blogs': blogs})
+    paginator = Paginator(blogs, 6)  # Show 6 blogs per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'core/blog_list.html', {'page_obj': page_obj})
+
+
+
+def blog_detail(request, blog_id):
+    blog = get_object_or_404(Blog, id=blog_id)
+    return render(request, 'core/blog_detail.html', {'blog': blog})

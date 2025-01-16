@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="blog-detail-section">
+    {% if blog.image %}
+        <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="blog-detail-image">
+    {% endif %}
+    <h1 class="blog-title">{{ blog.title }}</h1>
+    <p class="blog-content">{{ blog.content|safe }}</p>
+    <p class="blog-date">Published on {{ blog.created_at|date:"F j, Y" }}</p>
+</section>
+{% endblock %}

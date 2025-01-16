@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Appointment, UserProfile
+from django_summernote.widgets import SummernoteWidget
+from .models import Appointment, UserProfile, Blog
 
 class AppointmentForm(forms.ModelForm):
     class Meta:
@@ -43,4 +44,12 @@ class UserUpdateForm(forms.ModelForm):
                 user.profile.save()
         return user
     
+
+class BlogForm(forms.ModelForm):
+    class Meta:
+        model = Blog
+        fields = ['title', 'content', 'image']
+        widgets = {
+            'content': SummernoteWidget(),
+        }
 
