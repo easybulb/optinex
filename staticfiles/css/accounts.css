@@ -1,0 +1,124 @@
+/* General Styling for Authentication Forms */
+.auth-form, .login-form {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.auth-form h2, .login-form h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #333;
+    font-family: "Lora", serif;
+}
+
+.auth-form p, .login-form p {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 15px;
+}
+
+.auth-form a, .login-form a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-form a:hover, .login-form a:hover {
+    text-decoration: underline;
+}
+
+/* Form Elements */
+.auth-form form, .login-form form {
+    width: 100%;
+}
+
+.auth-form form input, 
+.auth-form form select, 
+.auth-form form textarea, 
+.login-form form input, 
+.login-form form select, 
+.login-form form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.auth-form form button, 
+.login-form form button {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.auth-form form button:hover, 
+.login-form form button:hover {
+    background-color: #0056b3;
+}
+
+.auth-form form button:disabled, 
+.login-form form button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Additional Info Links */
+.auth-form p a, .login-form p a {
+    font-size: 0.9rem;
+}
+
+/* Success/Error Messages */
+.auth-form .message, .login-form .message {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #28a745; /* Success message */
+}
+
+.auth-form .error, .login-form .error {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #dc3545; /* Error message */
+}
+
+/* Responsive Styling */
+@media (min-width: 768px) {
+    .auth-form, .login-form {
+        padding: 30px;
+    }
+
+    .auth-form h2, .login-form h2 {
+        font-size: 2rem;
+    }
+
+    .auth-form form button, 
+    .login-form form button {
+        font-size: 1.2rem;
+        padding: 12px 25px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .auth-form, .login-form {
+        max-width: 500px;
+    }
+
+    .auth-form h2, .login-form h2 {
+        font-size: 2.2rem;
+    }
+}
