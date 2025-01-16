@@ -9,6 +9,7 @@
     text-align: center;
     margin-bottom: 20px;
     font-family: "Lora", serif;
+    color: #333;
 }
 
 .blog-list {
@@ -75,6 +76,97 @@
 .edit-link:hover {
     text-decoration: underline;
 }
+
+/* Pagination */
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.page-info {
+    font-size: 1rem;
+    color: #555;
+    width: 100%;
+    text-align: center;
+}
+
+.pagination-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.pagination-link {
+    text-decoration: none;
+    color: #007bff;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination-link:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.pagination-current {
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    padding: 5px 10px;
+    border-radius: 4px;
+    border: 1px solid #007bff;
+}
+
+/* Tablet Screens (min-width: 768px) */
+@media (min-width: 768px) {
+    .blog-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Two columns */
+        gap: 30px;
+        justify-items: center;
+        padding: 20px;
+    }
+
+    .blog-card {
+        max-width: 100%; /* Adjust card width to fit in grid */
+    }
+
+    .blog-title {
+        font-size: 1.6rem;
+    }
+
+    .blog-date {
+        font-size: 1rem;
+    }
+}
+
+/* Larger Screens (min-width: 1024px) */
+@media (min-width: 1024px) {
+    .blog-list {
+        grid-template-columns: repeat(3, 1fr); /* Three columns */
+        gap: 40px;
+        padding: 40px;
+    }
+
+    .blog-card {
+        padding: 20px;
+    }
+
+    .blog-title {
+        font-size: 1.8rem;
+    }
+
+    .blog-date {
+        font-size: 1.1rem;
+    }
+}
+
 
 /* Tablet Screens (min-width: 768px) */
 @media (min-width: 768px) {
@@ -307,48 +399,3 @@
         color: #555;
     }
 }
-
-
-.pagination {
-    margin-top: 20px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.page-info {
-    font-size: 1rem;
-    color: #555;
-}
-
-.pagination-controls {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.pagination-link {
-    text-decoration: none;
-    color: #007bff;
-    padding: 5px 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.pagination-link:hover {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.pagination-current {
-    font-weight: bold;
-    color: #fff;
-    background-color: #007bff;
-    padding: 5px 10px;
-    border-radius: 4px;
-    border: 1px solid #007bff;
-}
-
-
