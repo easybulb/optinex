@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'clear_cache',
+    'django_summernote',
 ]
 
 # Custom allauth settings
