@@ -1,0 +1,141 @@
+/* Contact Hero Section */
+#contact-hero {
+    background-color: #0f172c;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+#contact-hero h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+#contact-hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Contact Form Section */
+#contact-form-section {
+    padding: 30px 20px;
+    background-color: #f8f9fa;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #132B67;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+label {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+input,
+textarea {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #1696a9;
+    box-shadow: 0 0 5px rgba(22, 150, 169, 0.5);
+}
+
+textarea {
+    resize: none;
+}
+
+.submit-button {
+    padding: 12px;
+    font-size: 1.1rem;
+    background-color: #1696a9;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #138496;
+}
+
+/* Media Queries for Larger Screens */
+@media (min-width: 768px) {
+    #contact-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    #contact-hero p {
+        font-size: 1.4rem;
+    }
+
+    .form-container {
+        padding: 30px;
+    }
+
+    form {
+        gap: 20px;
+    }
+
+    label {
+        font-size: 1.1rem;
+    }
+
+    input,
+    textarea {
+        font-size: 1.1rem;
+    }
+
+    .submit-button {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    #contact-hero {
+        padding: 50px 20px;
+    }
+
+    #contact-form-section {
+        padding: 50px 20px;
+    }
+
+    .form-container {
+        max-width: 800px;
+    }
+
+    #contact-hero h1 {
+        font-size: 3rem;
+    }
+
+    #contact-hero p {
+        font-size: 1.5rem;
+    }
+}
