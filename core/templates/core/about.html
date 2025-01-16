@@ -1,8 +1,56 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
 
 {% block content %}
-<section>
-    <h2>About Optinex</h2>
-    <p>At Optinex, we are dedicated to your eye health. With years of experience and a commitment to excellence, our optometrist ensures you receive the best care possible.</p>
+<section id="about-optinex" class="about-section">
+    <div class="hero">
+        <img src="{% static 'images/about-image.png' %}" alt="Eye Care Hero Image">
+        <div class="hero-text">
+            <h1>About Optinex Eye Care</h1>
+            <p>Your Trusted Partner for Eye Health in Nigeria</p>
+        </div>
+    </div>
+
+    <div class="content">
+        <p>
+            At Optinex, we are committed to providing exceptional, personalized eye care services for everyone. Combining
+            cutting-edge technology with compassionate care, we ensure your eyes remain healthy, comfortable, and clear.
+        </p>
+
+        <div class="about-cards">
+            <div class="card">
+                <h2>Why Choose Optinex?</h2>
+                <p>
+                    Every patient matters. Whether you need an eye test, consultation, or guidance on lenses and frames, we’re
+                    here to provide tailored services to suit your needs. Our flexible scheduling ensures convenience every
+                    step of the way.
+                </p>
+            </div>
+            <div class="card">
+                <h2>Our Mission</h2>
+                <p>
+                    To deliver exceptional eye care by blending advanced technology, expert knowledge, and compassionate service,
+                    ensuring better vision and preventable vision loss for all.
+                </p>
+            </div>
+            <div class="card">
+                <h2>Our Vision</h2>
+                <p>
+                    To become a trusted leader in eye care by offering innovative solutions that enhance lives through better
+                    vision and improved eye health.
+                </p>
+            </div>
+        </div>
+
+        <div class="cta">
+            <h2>Get Started Today</h2>
+            <p>Book an eye test online or call us. Your vision is our priority!</p>
+            <a href="{% url 'book_appointment' %}" class="cta-button">Book an Appointment</a>
+        </div>
+    </div>
 </section>
 {% endblock %}
