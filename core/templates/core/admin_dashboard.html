@@ -7,110 +7,94 @@
 {% endblock %}
 
 {% block content %}
-<h2>Admin Dashboard</h2>
-<p>Manage all appointments, users, and write blogs.</p>
+<section class="admin-dashboard">
+    <header class="dashboard-header">
+        <h2>Admin Dashboard</h2>
+        <p>Manage appointments, users, and blogs efficiently.</p>
+    </header>
 
-<!-- Appointment Summary -->
-<h3>Appointment Summary</h3>
-<ul>
-    <li>Total Appointments: {{ appointment_summary.total }}</li>
-    <li>Pending Appointments: {{ appointment_summary.pending }}</li>
-    <li>Confirmed Appointments: {{ appointment_summary.confirmed }}</li>
-    <li>Canceled Appointments: {{ appointment_summary.canceled }}</li>
-</ul>
+    <!-- Appointment Summary -->
+    <section class="dashboard-section">
+        <h3>Appointment Summary</h3>
+        <ul class="appointment-summary">
+            <li><strong>Total Appointments:</strong> {{ appointment_summary.total }}</li>
+            <li><strong>Pending:</strong> {{ appointment_summary.pending }}</li>
+            <li><strong>Confirmed:</strong> {{ appointment_summary.confirmed }}</li>
+            <li><strong>Canceled:</strong> {{ appointment_summary.canceled }}</li>
+        </ul>
+    </section>
 
-<!-- Filters and Search -->
-<h3>Search and Filters</h3>
-<form method="GET" action="{% url 'admin_dashboard' %}">
-    <input type="text" name="q" placeholder="Search by name, email, or service" value="{{ query }}">
-    <button type="submit">Search</button>
-</form>
+    <!-- Search and Filters -->
+    <section class="dashboard-section">
+        <h3>Search and Filters</h3>
+        <form method="GET" action="{% url 'admin_dashboard' %}" class="search-form">
+            <input type="text" name="q" placeholder="Search by name, email, or service" value="{{ query }}">
+            <button type="submit">Search</button>
+        </form>
+    </section>
 
-<!-- Appointment Table -->
-<h3>All Appointments</h3>
-<table>
-    <thead>
-        <tr>
-            <th>Date Added</th>
-            <th>User</th>
-            <th>Service</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody id="appointments-data">
-        {% for appointment in appointments %}
-        <tr>
-            <td>{{ appointment.created_at|date:"M d, Y h:i A" }}</td>
-            <td>
-                <a href="#" class="view-details" data-id="{{ appointment.id }}">{{ appointment.name }}</a>
-            </td>
-            <td>{{ appointment.service }}</td>
-            <td>{{ appointment.date }}</td>
-            <td>{{ appointment.time }}</td>
-            <td>{{ appointment.status }}</td>
-            <td>
-                <button class="edit-btn" data-id="{{ appointment.id }}">Edit</button>
-                <button class="cancel-btn" data-id="{{ appointment.id }}">Cancel</button>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
-<!-- Add Appointment -->
-<h3>Add Appointment</h3>
-<a href="{% url 'add_appointment' %}">Add New Appointment</a>
-
-<!-- Monthly Trends -->
-<h3>Monthly Appointment Trends</h3>
-<canvas id="appointmentChart"></canvas>
-
-<!-- Notifications -->
-<h3>Notifications</h3>
-{% if notifications %}
-<ul>
-    {% for notification in notifications %}
-    <li>{{ notification }}</li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>No notifications at this time.</p>
-{% endif %}
-
-<a href="{% url 'write_blog' %}">Write a Blog</a>
-
-<!-- Edit Modal -->
-<div id="edit-modal" style="display: none;">
-    <h3>Edit Appointment</h3>
-    <form id="edit-form">
-        <div>
-            <label for="edit-name">Name:</label>
-            <input type="text" name="name" id="edit-name">
+    <!-- Appointment Table -->
+    <section class="dashboard-section">
+        <h3>All Appointments</h3>
+        <div class="table-container">
+            <table class="dashboard-table">
+                <thead>
+                    <tr>
+                        <th>Date Added</th>
+                        <th>User</th>
+                        <th>Service</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for appointment in appointments %}
+                    <tr>
+                        <td>{{ appointment.created_at|date:"M d, Y h:i A" }}</td>
+                        <td><a href="#" class="view-details" data-id="{{ appointment.id }}">{{ appointment.name }}</a></td>
+                        <td>{{ appointment.service }}</td>
+                        <td>{{ appointment.date }}</td>
+                        <td>{{ appointment.time }}</td>
+                        <td>{{ appointment.status }}</td>
+                        <td>
+                            <button class="edit-btn" data-id="{{ appointment.id }}">Edit</button>
+                            <button class="cancel-btn" data-id="{{ appointment.id }}">Cancel</button>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
-        <div>
-            <label for="edit-service">Service:</label>
-            <select name="service" id="edit-service">
-                <option value="Quick Consultation">Quick Consultation</option>
-                <option value="Full Consultation">Full Consultation</option>
-            </select>
-        </div>
-        <div>
-            <label for="edit-date">Date:</label>
-            <input type="date" name="date" id="edit-date">
-        </div>
-        <div>
-            <label for="edit-time">Time:</label>
-            <input type="time" name="time" id="edit-time">
-        </div>
-        <div class="button-container">
-            <button type="submit" class="save-btn">Save</button>
-            <button type="button" onclick="closeModal()">Cancel</button>
-        </div>
-    </form>
-</div>
+    </section>
+
+    <!-- Add Appointment -->
+    <section class="dashboard-section">
+        <h3>Add Appointment</h3>
+        <a href="{% url 'add_appointment' %}" class="btn btn-add">Add New Appointment</a>
+    </section>
+
+    <!-- Monthly Trends -->
+    <section class="dashboard-section">
+        <h3>Monthly Appointment Trends</h3>
+        <canvas id="appointmentChart"></canvas>
+    </section>
+
+    <!-- Notifications -->
+    <section class="dashboard-section">
+        <h3>Notifications</h3>
+        {% if notifications %}
+        <ul class="notifications-list">
+            {% for notification in notifications %}
+            <li>{{ notification }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>No notifications at this time.</p>
+        {% endif %}
+    </section>
+</section>
 {% endblock %}
 
 {% block scripts %}
