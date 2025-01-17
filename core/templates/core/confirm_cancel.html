@@ -1,11 +1,21 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/confirm_cancel.css' %}">
+{% endblock %}
+
 {% block content %}
-<h2>Cancel Appointment</h2>
-<p>Are you sure you want to cancel your appointment for {{ appointment.service }} on {{ appointment.date }} at {{ appointment.time }}?</p>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Yes, Cancel</button>
-    <a href="{% url 'account_dashboard' %}">No, Go Back</a>
-</form>
+<section class="confirm-cancel-section">
+    <header class="confirm-header">
+        <h2>Cancel Appointment</h2>
+        <p>Are you sure you want to cancel your appointment for <strong>{{ appointment.service }}</strong> on <strong>{{ appointment.date }}</strong> at <strong>{{ appointment.time }}</strong>?</p>
+    </header>
+    <form method="post" class="cancel-form">
+        {% csrf_token %}
+        <button type="submit" class="btn-cancel">Yes, Cancel</button>
+        <a href="{% url 'account_dashboard' %}" class="btn-back">No, Go Back</a>
+    </form>
+</section>
 {% endblock %}
