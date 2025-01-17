@@ -1,10 +1,21 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/add_appointment.css' %}">
+{% endblock %}
+
 {% block content %}
-<h2>Add New Appointment</h2>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Add Appointment</button>
-</form>
+<section class="add-appointment">
+    <header class="appointment-header">
+        <h2>Add New Appointment</h2>
+        <p>Fill out the form below to create a new appointment.</p>
+    </header>
+    <form method="POST" class="appointment-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn-submit">Add Appointment</button>
+    </form>
+</section>
 {% endblock %}
