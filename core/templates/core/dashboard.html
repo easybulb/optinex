@@ -127,4 +127,23 @@
         </ul>
     </section>
 </section>
+
+{% block scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const toggleProfileEditButton = document.getElementById("toggleProfileEdit");
+        const editProfileForm = document.getElementById("editProfileForm");
+
+        if (toggleProfileEditButton && editProfileForm) {
+            toggleProfileEditButton.addEventListener("click", function (event) {
+                event.preventDefault();
+                const isFormVisible = editProfileForm.style.display === "block";
+                editProfileForm.style.display = isFormVisible ? "none" : "block";
+                toggleProfileEditButton.textContent = isFormVisible ? "Edit Profile" : "Cancel Edit";
+            });
+        }
+    });
+</script>
+{% endblock %}
+
 {% endblock %}
