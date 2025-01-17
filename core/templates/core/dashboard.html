@@ -1,107 +1,130 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
 {% block content %}
-<h2>Welcome to Your Dashboard, {{ user.first_name }}</h2>
+<section class="dashboard-section">
+    <header class="dashboard-header">
+        <h2>Welcome to Your Dashboard, {{ user.first_name }}</h2>
+        <p>Manage your profile, appointments, and stay updated with notifications.</p>
+    </header>
 
-<!-- Profile Section -->
-<h3>Your Profile</h3>
-<ul>
-    <li><strong>Name:</strong> {{ user.get_full_name }}</li>
-    <li><strong>Email:</strong> {{ user.email }}</li>
-    <li><strong>Phone:</strong> {{ user.profile.phone_number|default:"Not provided" }}</li>
-</ul>
-<a href="#" id="toggleProfileEdit">Edit Profile</a>
-<div id="editProfileForm" style="display: none;">
-    <form method="POST">
-        {% csrf_token %}
-        {{ user_form.as_p }}
-        <button type="submit">Save Changes</button>
-    </form>
-</div>
+    <!-- Profile Section -->
+    <section class="profile-section">
+        <h3>Your Profile</h3>
+        <ul class="profile-details">
+            <li><strong>Name:</strong> {{ user.get_full_name }}</li>
+            <li><strong>Email:</strong> {{ user.email }}</li>
+            <li><strong>Phone:</strong> {{ user.profile.phone_number|default:"Not provided" }}</li>
+        </ul>
+        <a href="#" id="toggleProfileEdit" class="btn-edit">Edit Profile</a>
+        <div id="editProfileForm" class="edit-form" style="display: none;">
+            <form method="POST">
+                {% csrf_token %}
+                {{ user_form.as_p }}
+                <button type="submit" class="btn-save">Save Changes</button>
+            </form>
+        </div>
+    </section>
 
-<!-- Appointment Summary -->
-<h3>Appointment Summary</h3>
-<ul>
-    <li><strong>Total Appointments:</strong> {{ total_appointments }}</li>
-    <li><strong>Active Appointments:</strong> {{ active_appointments }}</li>
-    <li><strong>Canceled Appointments:</strong> {{ canceled_appointments }}</li>
-</ul>
+    <!-- Appointment Summary -->
+    <section class="appointment-summary">
+        <h3>Appointment Summary</h3>
+        <ul>
+            <li><strong>Total Appointments:</strong> {{ total_appointments }}</li>
+            <li><strong>Active Appointments:</strong> {{ active_appointments }}</li>
+            <li><strong>Canceled Appointments:</strong> {{ canceled_appointments }}</li>
+        </ul>
+    </section>
 
-<!-- Upcoming Appointments -->
-<h3>Upcoming Appointments</h3>
-{% if upcoming_appointments %}
-    <table>
-        <thead>
-            <tr>
-                <th>Service</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for appointment in upcoming_appointments %}
-            <tr>
-                <td>{{ appointment.service }}</td>
-                <td>{{ appointment.date }}</td>
-                <td>{{ appointment.time }}</td>
-                <td>{{ appointment.status }}</td>
-                <td>
-                    <a href="{% url 'cancel_appointment' appointment.id %}" onclick="return confirm('Are you sure you want to cancel this appointment?');">Cancel</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-{% else %}
-    <p>You have no upcoming appointments.</p>
-{% endif %}
+    <!-- Upcoming Appointments -->
+    <section class="appointments-section">
+        <h3>Upcoming Appointments</h3>
+        {% if upcoming_appointments %}
+            <table class="appointments-table">
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for appointment in upcoming_appointments %}
+                    <tr>
+                        <td>{{ appointment.service }}</td>
+                        <td>{{ appointment.date }}</td>
+                        <td>{{ appointment.time }}</td>
+                        <td>{{ appointment.status }}</td>
+                        <td>
+                            <a href="{% url 'cancel_appointment' appointment.id %}" class="btn-cancel" onclick="return confirm('Are you sure you want to cancel this appointment?');">Cancel</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>You have no upcoming appointments.</p>
+        {% endif %}
+    </section>
 
-<!-- Past Appointments -->
-<h3>Past Appointments</h3>
-{% if past_appointments %}
-    <table>
-        <thead>
-            <tr>
-                <th>Service</th>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for appointment in past_appointments %}
-            <tr>
-                <td>{{ appointment.service }}</td>
-                <td>{{ appointment.date }}</td>
-                <td>{{ appointment.time }}</td>
-                <td>{{ appointment.status }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-{% else %}
-    <p>You have no past appointments.</p>
-{% endif %}
+    <!-- Past Appointments -->
+    <section class="appointments-section">
+        <h3>Past Appointments</h3>
+        {% if past_appointments %}
+            <table class="appointments-table">
+                <thead>
+                    <tr>
+                        <th>Service</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for appointment in past_appointments %}
+                    <tr>
+                        <td>{{ appointment.service }}</td>
+                        <td>{{ appointment.date }}</td>
+                        <td>{{ appointment.time }}</td>
+                        <td>{{ appointment.status }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>You have no past appointments.</p>
+        {% endif %}
+    </section>
 
-<!-- Notifications -->
-<h3>Notifications</h3>
-{% if notifications %}
-    <ul>
-        {% for notification in notifications %}
-        <li>{{ notification }}</li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>No notifications at this time.</p>
-{% endif %}
+    <!-- Notifications -->
+    <section class="notifications-section">
+        <h3>Notifications</h3>
+        {% if notifications %}
+            <ul class="notifications-list">
+                {% for notification in notifications %}
+                <li>{{ notification }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No notifications at this time.</p>
+        {% endif %}
+    </section>
 
-<!-- Quick Links -->
-<h3>Quick Links</h3>
-<ul>
-    <li><a href="{% url 'book_appointment' %}">Book a New Appointment</a></li>
-    <li><a href="{% url 'blog_list' %}">Read Our Blogs</a></li>
-    <li><a href="{% url 'account_change_password' %}">Change Password</a></li>
-</ul>
+    <!-- Quick Links -->
+    <section class="quick-links-section">
+        <h3>Quick Links</h3>
+        <ul class="quick-links">
+            <li><a href="{% url 'book_appointment' %}" class="btn-link">Book a New Appointment</a></li>
+            <li><a href="{% url 'blog_list' %}" class="btn-link">Read Our Blogs</a></li>
+            <li><a href="{% url 'account_change_password' %}" class="btn-link">Change Password</a></li>
+        </ul>
+    </section>
+</section>
 {% endblock %}

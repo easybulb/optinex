@@ -1,0 +1,168 @@
+/* General Styles */
+/* body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+} */
+
+.dashboard-section {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Section */
+.dashboard-header h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.dashboard-header p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #666;
+}
+
+/* Profile Section */
+.profile-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile-section ul li {
+    margin-bottom: 10px;
+}
+
+.btn-edit {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.edit-form {
+    margin-top: 15px;
+}
+
+.btn-save {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-save:hover {
+    background-color: #218838;
+}
+
+/* Appointment Summary */
+.appointment-summary ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.appointment-summary ul li {
+    margin-bottom: 10px;
+}
+
+/* Appointments Table */
+.appointments-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.appointments-table th,
+.appointments-table td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+.appointments-table th {
+    background-color: #f4f4f9;
+    font-weight: bold;
+}
+
+.btn-cancel {
+    background-color: #d9534f;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-cancel:hover {
+    background-color: #c9302c;
+}
+
+/* Notifications */
+.notifications-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.notifications-list li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Quick Links */
+.quick-links-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.quick-links-section ul li {
+    margin-bottom: 10px;
+}
+
+.btn-link {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.btn-link:hover {
+    color: #0056b3;
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .dashboard-section {
+        padding: 30px;
+    }
+
+    .dashboard-header h2 {
+        font-size: 2.5rem;
+    }
+
+    .appointments-table th,
+    .appointments-table td {
+        padding: 15px;
+    }
+
+    .btn-save,
+    .btn-cancel {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
