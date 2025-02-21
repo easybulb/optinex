@@ -17,32 +17,23 @@
     {% endif %}
     
     <!-- Blog List -->
-    <div class="blog-list">
-        {% for blog in page_obj %}
-        <div class="blog-card">
-            <a href="{% url 'blog_detail' blog.id %}" class="blog-link">
-                <!-- Blog Image -->
-                {% if blog.image %}
-                <img src="{{ blog.image.url }}" alt="{{ blog.title }}" class="blog-image">
-                {% endif %}
-                
-                <!-- Blog Title -->
-                <h3 class="blog-title">{{ blog.title }}</h3>
-                
-                <!-- Blog Excerpt -->
-                <p class="blog-excerpt">{{ blog.content|safe|truncatewords:30 }}</p>
-            </a>
-            
-            <!-- Blog Published Date -->
-            <p class="blog-date">Published on {{ blog.created_at|date:"F j, Y" }}</p>
-            
-            <!-- Edit Link for Admins -->
-            {% if user.is_staff %}
-            <a href="{% url 'edit_blog' blog.id %}" class="edit-link">Edit</a>
+    {% for blog in page_obj %}
+    <div class="blog-card">
+        <a href="{% url 'blog_detail' blog.id %}" class="blog-link">
+            <!-- Blog Image -->
+            {% if blog.display_image %}
+                <img src="{{ blog.display_image }}" alt="{{ blog.title }}" class="blog-image">
             {% endif %}
-        </div>
-        {% endfor %}
+            <h3 class="blog-title">{{ blog.title }}</h3>
+            <p class="blog-excerpt">{{ blog.content|safe|truncatewords:30 }}</p>
+        </a>
+        <p class="blog-date">Published on {{ blog.created_at|date:"F j, Y" }}</p>
+        {% if user.is_staff %}
+            <a href="{% url 'edit_blog' blog.id %}" class="edit-link">Edit</a>
+        {% endif %}
     </div>
+{% endfor %}
+
 
     <!-- Pagination Controls -->
     {% if page_obj.has_other_pages %}

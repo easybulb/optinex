@@ -46,8 +46,14 @@ class Blog(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
     image = models.ImageField(upload_to='blog_images/', blank=True, null=True)
+    image_url = models.URLField(blank=True, null=True, help_text="Provide an external image URL if not uploading a file.")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    def display_image(self):
+        """Returns the preferred image source."""
+        return self.image_url if self.image_url else self.image.url if self.image else None
+
     def __str__(self):
         return self.title
+
