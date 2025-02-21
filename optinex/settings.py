@@ -38,13 +38,13 @@ if os.path.isfile("env.py"):
 else:
     DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = [
-    '.herokuapp.com', 
-    '127.0.0.1', 
-    'localhost', 
-    'optinex-eyecare.com', 
-    'www.optinex-eyecare.com'
-]
+
+ALLOWED_HOSTS = os.environ.get(
+    "ALLOWED_HOSTS",
+    ".herokuapp.com 127.0.0.1 localhost optinex-eyecare.com www.optinex-eyecare.com"
+).split()
+
+
 
 
 # Application definition
