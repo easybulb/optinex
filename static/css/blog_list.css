@@ -17,7 +17,7 @@
 .blog-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center items */
+    justify-content: space-between; /* Evenly distribute across the row */
     gap: 20px;
     max-width: 1400px;
     margin: 0 auto;
@@ -30,8 +30,8 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 15px;
-    width: 22%; /* Adjust for 4 items per row */
-    min-width: 280px; /* Prevent too small cards */
+    width: calc(25% - 20px); /* Ensure 4 per row with spacing */
+    min-width: 280px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -71,7 +71,7 @@
 /* Tablet View (2 columns) */
 @media (max-width: 1024px) {
     .blog-card {
-        width: 45%; /* Adjust for 2 items per row */
+        width: calc(50% - 20px); /* Adjust for 2 items per row */
     }
 }
 
