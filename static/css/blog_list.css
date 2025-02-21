@@ -74,6 +74,63 @@
     color: #aaa;
 }
 
+.blog-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.edit-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.edit-link:hover {
+    text-decoration: underline;
+}
+
+.delete-form {
+    display: inline;
+}
+
+.delete-btn {
+    background-color: #ff4d4d; /* Red button */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: #cc0000; /* Darker red on hover */
+}
+
+.delete-confirmation {
+    text-align: center;
+    padding: 20px;
+}
+
+.cancel-btn {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #ccc;
+    color: black;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cancel-btn:hover {
+    background-color: #bbb;
+}
+
+
 /* Tablet View (2 columns) */
 @media (max-width: 1024px) {
     .blog-card {

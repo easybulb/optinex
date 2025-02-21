@@ -31,8 +31,15 @@
         </a>
         <p class="blog-date">Published on {{ blog.created_at|date:"F j, Y" }}</p>
         {% if user.is_staff %}
+        <div class="blog-actions">
             <a href="{% url 'edit_blog' blog.id %}" class="edit-link">Edit</a>
-        {% endif %}
+            <form action="{% url 'delete_blog' blog.id %}" method="POST" class="delete-form">
+                {% csrf_token %}
+                <button type="submit" class="delete-btn">Delete</button>
+            </form>
+        </div>
+    {% endif %}
+    
     </div>
 {% endfor %}
 

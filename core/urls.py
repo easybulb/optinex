@@ -21,4 +21,5 @@ urlpatterns = [
     path('deactivate-user/<int:user_id>/', views.deactivate_user, name='deactivate_user'),
     path('get-appointment-details/<int:appointment_id>/', views.get_appointment_details, name='get_appointment_details'),
     path('edit-appointment/<int:appointment_id>/', views.edit_appointment, name='edit_appointment'),
+    path('blog/delete/<int:blog_id>/', delete_blog, name='delete_blog'),
 ]

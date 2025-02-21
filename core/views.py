@@ -270,3 +270,18 @@ def blog_list(request):
 def blog_detail(request, blog_id):
     blog = get_object_or_404(Blog, id=blog_id)
     return render(request, 'core/blog_detail.html', {'blog': blog})
+
+
+
+@login_required
+@admin_only
+def delete_blog(request, blog_id):
+    blog = get_object_or_404(Blog, id=blog_id)
+
+    if request.method == "POST":
+        blog.delete()
+        messages.success(request, "Blog post deleted successfully!")
+        return redirect('blog_list')
+
+    return render(request, 'core/confirm_delete.html', {'blog': blog})
+
