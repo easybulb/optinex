@@ -33,10 +33,7 @@
         {% if user.is_staff %}
         <div class="blog-actions">
             <a href="{% url 'edit_blog' blog.id %}" class="edit-link">Edit</a>
-            <form action="{% url 'delete_blog' blog.id %}" method="POST" class="delete-form">
-                {% csrf_token %}
-                <button type="submit" class="delete-btn">Delete</button>
-            </form>
+            <a href="{% url 'delete_blog' blog.id %}" class="delete-btn">Delete</a>
         </div>
     {% endif %}
     
