@@ -6,9 +6,11 @@
 {% endblock %}
 
 {% block content %}
+
+<section class="heading">
+    <h1 class="blog-heading">Blog Posts</h1>
+</section>
 <section class="blog-section">
-    <h2 class="blog-heading">Blog Posts</h2>
-    
     <!-- Add Blog Button for Admins -->
     {% if user.is_staff %}
         <div class="add-blog">
