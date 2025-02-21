@@ -130,6 +130,75 @@
     background-color: #bbb;
 }
 
+/* Confirm Delete Section */
+.confirm-delete {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.confirm-delete h2 {
+    font-size: 1.8rem;
+    color: #d9534f; /* Red color to indicate danger */
+    margin-bottom: 15px;
+    font-family: "Lora", serif;
+}
+
+.confirm-delete p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.confirm-delete form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.confirm-delete .btn-danger {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 250px;
+    font-weight: bold;
+}
+
+.confirm-delete .btn-danger:hover {
+    background-color: #c9302c;
+}
+
+.confirm-delete .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 250px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}
+
+.confirm-delete .btn-secondary:hover {
+    background-color: #545b62;
+}
+
+
 
 /* Tablet View (2 columns) */
 @media (max-width: 1024px) {
@@ -152,6 +221,30 @@
     .heading h1 {
         font-size: 1.6rem;
         text-align: center;
+    }
+
+    .confirm-delete {
+        max-width: 90%;
+        padding: 20px;
+    }
+
+    .confirm-delete h2 {
+        font-size: 1.6rem;
+    }
+
+    .confirm-delete p {
+        font-size: 1rem;
+    }
+
+    .confirm-delete form {
+        flex-direction: column;
+    }
+
+    .confirm-delete .btn-danger,
+    .confirm-delete .btn-secondary {
+        font-size: 1rem;
+        padding: 10px;
+        width: 100%;
     }
 }
 
