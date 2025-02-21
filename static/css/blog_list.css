@@ -16,7 +16,7 @@
 /* Blog Container using Flexbox */
 .blog-section {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: column;
     justify-content: center; /* Center content properly */
     gap: 20px;
     max-width: 1400px;
