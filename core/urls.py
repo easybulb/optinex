@@ -1,4 +1,5 @@
 from django.urls import path
+from .views import delete_blog
 from . import views
 
 urlpatterns = [
