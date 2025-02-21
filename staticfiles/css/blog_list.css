@@ -15,7 +15,7 @@
 /* Blog Grid (Desktop First) */
 .blog-list {
     display: grid;
-    grid-template-columns: repeat(4, 4fr); /* 4 columns on large screens */
+    grid-template-columns: repeat(2, 4fr); /* 4 columns on large screens */
     gap: 30px;
     max-width: 1400px;
     margin: 0 auto;
