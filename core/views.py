@@ -285,3 +285,4 @@ def delete_blog(request, blog_id):
 
     return render(request, 'core/confirm_delete.html', {'blog': blog})
 
+
