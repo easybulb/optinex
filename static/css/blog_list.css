@@ -1,8 +1,8 @@
 /* Blog Section */
 .heading h1 {
-    font-size: 1.3rem;
+    font-size: 2rem;
     text-align: center;
-    margin-bottom: 20px;
+    margin: 40px;
 }
 
 .blog-section {
@@ -90,6 +90,12 @@
 
     .blog-card {
         width: 90%; /* Full width */
+    }
+
+    .heading h1 {
+        font-size: 1.6rem;
+        text-align: center;
+        margin: 40px;
     }
 }
 
