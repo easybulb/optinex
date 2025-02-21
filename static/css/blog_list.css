@@ -81,7 +81,7 @@
 /* Tablet Screens (min-width: 768px) */
 @media (min-width: 768px) {
     .blog-list {
-        grid-template-columns: repeat(2, 1fr); /* Two columns on tablets */
+        grid-template-columns: repeat(2, 2fr); /* Two columns on tablets */
         gap: 30px;
     }
 
@@ -93,7 +93,7 @@
 /* Larger Screens (min-width: 1024px) */
 @media (min-width: 1024px) {
     .blog-list {
-        grid-template-columns: repeat(4, 1fr); /* Four columns on large screens */
+        grid-template-columns: repeat(4, 4fr); /* Four columns on large screens */
         gap: 40px;
     }
 
