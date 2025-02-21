@@ -10,14 +10,16 @@
 <section class="heading">
     <h1 class="blog-heading">Blog Posts</h1>
 </section>
-<section class="blog-section">
+<section class="write-blog">
     <!-- Add Blog Button for Admins -->
     {% if user.is_staff %}
         <div class="add-blog">
             <a href="{% url 'write_blog' %}" class="btn btn-primary">Write a Blog</a>
         </div>
     {% endif %}
+</section>
     
+<section class="blog-section">
     <!-- Blog List -->
     {% for blog in page_obj %}
         <div class="blog-card">

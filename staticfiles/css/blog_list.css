@@ -5,6 +5,12 @@
     margin: 40px 20px 20px 20px;
 }
 
+.write-blog {
+    text-align: left;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
 .blog-section {
     padding: 40px;
     background-color: #f9f9f9;
@@ -257,6 +263,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    margin-bottom: 20px;
 }
 
 .page-info {
