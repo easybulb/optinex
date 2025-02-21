@@ -1,4 +1,4 @@
-/* Blog List Section */
+/* Blog Section */
 .blog-section {
     padding: 40px;
     background-color: #f9f9f9;
@@ -13,11 +13,11 @@
     color: #333;
 }
 
-/* Blog List using Flexbox */
-.blog-list {
+/* Blog Container using Flexbox */
+.blog-section {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Evenly distribute across the row */
+    justify-content: center; /* Center content properly */
     gap: 20px;
     max-width: 1400px;
     margin: 0 auto;
@@ -30,8 +30,8 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 15px;
-    width: calc(25% - 20px); /* Ensure 4 per row with spacing */
-    min-width: 280px;
+    width: calc(25% - 20px); /* 4 per row */
+    min-width: 280px; /* Ensures it doesn’t get too small */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -71,13 +71,13 @@
 /* Tablet View (2 columns) */
 @media (max-width: 1024px) {
     .blog-card {
-        width: calc(50% - 20px); /* Adjust for 2 items per row */
+        width: calc(50% - 20px); /* 2 per row */
     }
 }
 
 /* Mobile View (1 column) */
 @media (max-width: 768px) {
-    .blog-list {
+    .blog-section {
         flex-direction: column;
         align-items: center;
     }
@@ -85,4 +85,53 @@
     .blog-card {
         width: 90%; /* Full width */
     }
+}
+
+/* Pagination */
+.pagination {
+    margin-top: 30px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.page-info {
+    font-size: 1rem;
+    color: #555;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.pagination-controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.pagination-link {
+    text-decoration: none;
+    color: #007bff;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination-link:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.pagination-current {
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #007bff;
 }
