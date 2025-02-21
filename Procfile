@@ -1,1 +1,1 @@
-web: gunicorn optinex.wsgi
+web: gunicorn optinex.wsgi --log-file -
