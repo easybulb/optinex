@@ -104,7 +104,8 @@ header {
     padding: 15px 0;
     justify-content: space-evenly;
     width: 100%;
-    margin-bottom: -15px;
+    margin-bottom: -10px;
+    z-index: 1000;
 }
 
 #nav-container {
