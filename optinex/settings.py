@@ -41,7 +41,7 @@ else:
 
 ALLOWED_HOSTS = os.environ.get(
     "ALLOWED_HOSTS",
-    ".herokuapp.com 127.0.0.1 localhost optinex-eyecare.com www.optinex-eyecare.com"
+    ".herokuapp.com 127.0.0.1 localhost optinex-eyecare.com www.optinex-eyecare.com optinex.com.ng www.optinex.com.ng"
 ).split()
 
 
