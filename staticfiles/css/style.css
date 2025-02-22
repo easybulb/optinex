@@ -37,6 +37,7 @@ h4 {
 /* ---- Header section - chose to not add burger style for better accessibility ---- */
 header {
     background-color: #dbe7e9;
+    z-index: 1000;
 }
 
 #logo-accouunts-container {
@@ -104,7 +105,7 @@ header {
     padding: 15px 0;
     justify-content: space-evenly;
     width: 100%;
-    margin-bottom: -10px;
+    margin-bottom: -5px;
     z-index: 1000;
 }
 
