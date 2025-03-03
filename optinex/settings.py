@@ -45,6 +45,30 @@ ALLOWED_HOSTS = os.environ.get(
 ).split()
 
 
+# Enforce HTTPS only in production, disable for local development
+if DEBUG:
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+else:
+    SECURE_SSL_REDIRECT = True  # Redirect HTTP to HTTPS
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SESSION_COOKIE_SECURE = True  # Cookies only sent over HTTPS
+    CSRF_COOKIE_SECURE = True  # CSRF protection only works over HTTPS
+
+# CSRF Trusted Origins (Includes Localhost and Dev Tunnels for Testing)
+if DEBUG:
+    CSRF_TRUSTED_ORIGINS = [
+        "http://localhost:8000",
+        "http://127.0.0.1:8000",
+        "https://1ls3qkr5-8000.uks1.devtunnels.ms",
+    ]
+else:
+    CSRF_TRUSTED_ORIGINS = [
+        "https://www.optinex-eyecare.com",
+        "https://optinex-eyecare.com",
+    ]
+
 
 
 # Application definition
