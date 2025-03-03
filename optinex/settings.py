@@ -69,7 +69,11 @@ else:
         "https://optinex-eyecare.com",
     ]
 
-
+# HTTP Strict Transport Security (HSTS) - Forces HTTPS (Only in Production)
+if not DEBUG:
+    SECURE_HSTS_SECONDS = 31536000  # 1 year (recommended by Google)
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True  # Apply to subdomains too
+    SECURE_HSTS_PRELOAD = True  # Allow browser preload list
 
 # Application definition
 
